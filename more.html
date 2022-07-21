@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<body>
+	<style type="text/css">
+
+		html, body {padding: 0; margin: 0;}
+
+		.square {
+			background-color: rgba(0, 0, 0, 0.8);
+			width: 100%;
+			height: 100%;
+			display: flex;
+			flex-direction: row;
+		}
+
+
+		.button {
+			background-color: rgba(0, 0, 0, 0.8);
+			margin-top: 20px;
+			height: 100px;
+			margin-left: 60px;
+			width: 100px;
+			transform: rotate(-90deg);
+			border-radius: 70px;
+			border: 3px solid rgba(0, 0, 0, 1);
+			transition: all 0.3s;
+
+			text-align: center;
+		}
+		.button:hover {
+			background-color: rgba(0, 0, 0, 0.1);
+			transform: rotate(0deg);
+			transition: all 0.3s;
+		}
+		.button span {
+			z-index: 2;
+			display: block;
+			position: absolute;
+
+			margin-top: 40px;
+			margin-left: 32px;
+
+
+		}
+
+		.o span {
+			margin-left: 38px;
+		}
+
+	</style>
+
+	<div>
+		<div class="square">
+			<div class="button">
+				<span>Hello</span>
+			</div>
+			<div class="button">
+				<span>what</span>
+			</div>
+			<div class="button o">
+				<span>are</span>
+			</div>
+			<div class="button o">
+				<span>you</span>
+			</div>
+			<div class="button">
+				<span>doing</span>
+			</div>
+			<div class="button">
+				<span>here?</span>
+			</div>
+		</div>
+	</div>
+</body>
