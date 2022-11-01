@@ -3,38 +3,106 @@
 
 <style type="text/css">
   body {
-    background: #2c2c2c;
+    background: #006666;
   }
 </style>
 
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+</head>
 <body>
 
-<span>
-  <canvas id="myCanvas" width="400" height="400"
-  style="border:1px solid #c3c3c3;">
-  Your browser does not support the canvas element.
-  </canvas>
-</span>
+  <span>
+    <canvas id="myCanvas" width="400" height="400" style="border: 1px solid; background: #999999;"></canvas>
+  </span>
 
-<script>
-var canvas = document.getElementById("myCanvas");
-var ctx = canvas.getContext("2d");
+  <script type="text/javascript">
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+    var center = (canvas.height / 2);
+    var radius = center * 0.8;
 
-ctx.fillStyle = "#F0B0B0";
-ctx.fillRect(10,20,150,75);
+    setInterval(drawClock, 1000);
 
-ctx.lineWidth = 8;
-ctx.strokeStyle = "#B0F0B0";
-ctx.beginPath();
-ctx.arc(200, 300, 90, 0, 2 * Math.PI);
-ctx.stroke();
+    function drawClock() {
+      drawCircle(center, center, radius, "#FFFFFF");
+      drawCircle(center, center, 10, "#505050");
+      drawCircleNoFill(center, center, radius, "#735050");
+      drawNumbers(center, radius);
+      drawTime(radius, center);
+    }
 
-ctx.fillStyle = "#B0B0F0";
-ctx.font = "30px Arial";
-ctx.fillText("Hello World!", 200, 90);
+    function drawCircle(x, y, r, c) {
+      ctx.beginPath();
+      ctx.arc(x, y, r, 0 , 2 * Math.PI);
+      ctx.fillStyle = c;
+      ctx.fill();
+    }
 
-</script>
+    function drawCircleNoFill(x, y, r, c) {
+      ctx.lineWidth = 8;
+      ctx.strokeStyle = c;
+      ctx.beginPath();
+      ctx.arc(x, y, r, 0 , 2 * Math.PI);
+      ctx.stroke();
+    }
+
+    function drawNumbers(c, r) {
+      var ang;
+      var num;
+      ctx.font = r * 0.12 + "px arial";
+      ctx.textBaseline = "middle";
+      ctx.textAlign = "center";
+      ctx.translate(c, c);
+      for(num = 1; num < 13; num++){
+        ang = num * Math.PI / 6;
+        ctx.rotate(ang);
+        ctx.translate(0, -r * 0.88);
+        ctx.rotate(-ang);
+        ctx.fillText(num.toString(), 0, 0);
+        ctx.rotate(ang);
+        ctx.translate(0, r * 0.88);
+        ctx.rotate(-ang);
+      }
+      ctx.translate(-c, -c)
+    }
+
+    function drawHand(pos, w, l, c) {
+      // translate(c, c);
+      ctx.beginPath();
+      ctx.lineWidth = w;
+      ctx.lineCap = "round";
+      ctx.moveTo(0, 0);
+      ctx.rotate(pos);
+      ctx.lineTo(0, -l);
+      ctx.stroke();
+      ctx.rotate(-pos);
+      // translate(-c, -c);
+    }
+
+    function drawTime(r, c) {
+      var now = new Date();
+      var hour = now.getHours();
+      var minute = now.getMinutes();
+      var second = now.getSeconds();
+
+      ctx.translate(c, c);
+
+      hour = hour % 12;
+      hour = (hour*Math.PI/6)+(minute*Math.PI/(6*60))+(second*Math.PI/(360*60));
+      drawHand(hour, 8, 100, 0);
+      minute = (minute*Math.PI/30)+(second*Math.PI/(30*60));
+      drawHand(minute, 5, r * 0.8, c);
+      second = (second*Math.PI/30);
+      drawHand(second, 2, r * 0.9, c);
+
+      ctx.translate(-c, -c)
+    }
+
+
+  </script>
 
 </body>
 </html>
-
