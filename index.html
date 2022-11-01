@@ -1,78 +1,40 @@
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>4b3c-github</title>
-	</head>
-	<body>
-		<style type="text/css">
+<!DOCTYPE html>
+<html>
 
-			html, body {padding: 0; margin: 0;}
+<style type="text/css">
+  body {
+    background: #2c2c2c;
+  }
+</style>
 
-			.square {
-				background-color: rgba(0, 0, 0, 0.8);
-				width: 100%;
-				height: 100%;
-				display: flex;
-				flex-direction: row;
-			}
+<body>
 
+<span>
+  <canvas id="myCanvas" width="400" height="400"
+  style="border:1px solid #c3c3c3;">
+  Your browser does not support the canvas element.
+  </canvas>
+</span>
 
-			.button {
-				background-color: rgba(0, 0, 0, 0.8);
-				margin-top: 20px;
-				height: 100px;
-				margin-left: 60px;
-				width: 100px;
-				transform: rotate(-90deg);
-				border-radius: 70px;
-				border: 3px solid rgba(0, 0, 0, 1);
-				transition: all 0.3s;
+<script>
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
 
-				text-align: center;
-			}
-			.button:hover {
-				background-color: rgba(0, 0, 0, 0.1);
-				transform: rotate(0deg);
-				transition: all 0.3s;
-			}
-			.button span {
-				z-index: 2;
-				display: block;
-				position: absolute;
+ctx.fillStyle = "#F0B0B0";
+ctx.fillRect(10,20,150,75);
 
-				margin-top: 40px;
-				margin-left: 32px;
+ctx.lineWidth = 8;
+ctx.strokeStyle = "#B0F0B0";
+ctx.beginPath();
+ctx.arc(200, 300, 90, 0, 2 * Math.PI);
+ctx.stroke();
 
+ctx.fillStyle = "#B0B0F0";
+ctx.font = "30px Arial";
+ctx.fillText("Hello World!", 200, 90);
 
-			}
+</script>
 
-			.o span {
-				margin-left: 38px;
-			}
-
-		</style>
-
-		<div>
-			<div class="square">
-				<div class="button">
-					<span>Hello</span>
-				</div>
-				<div class="button">
-					<span>what</span>
-				</div>
-				<div class="button o">
-					<span>are</span>
-				</div>
-				<div class="button o">
-					<span>you</span>
-				</div>
-				<div class="button">
-					<span>doing</span>
-				</div>
-				<div class="button">
-					<span>here?</span>
-				</div>
-			</div>
-		</div>
-	</body>
+</body>
 </html>
+
