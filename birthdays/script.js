@@ -1,18 +1,9 @@
-var y = 400;
+let img;
 
-function setup() {
-    createCanvas(windowWidth, 400);
+function preload() {
+  img = loadImage("hamster.jpg");
 }
 
 function draw() {
-    background(89, 213, 247);
-    fill(255, 10, 10);
-    textAlign(CENTER, TOP);
-    textSize(40);
-    text("Happy Birthday\nCampbell!!", windowWidth * 0.5, y);
-    if (y < -100) {
-        y = 400;
-    } else {
-        y--;
-    }
+  image(img, 0, 0, 300, 300);
 }
