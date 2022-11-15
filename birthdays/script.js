@@ -2,7 +2,7 @@ var y = 20;
 let img;
 
 function preload() {
-    img = loadImage('assets/soccerball.png');
+    img = loadImage('https://cdn.discordapp.com/attachments/599468968545091608/1041938489060634785/soccerball.png');
 }
 
 function setup() {
