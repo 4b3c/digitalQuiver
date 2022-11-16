@@ -1,5 +1,9 @@
-var y = 20;
 let img;
+var x = 0;
+var y = 0;
+var xvel = 0;
+var yvel = 0;
+var prev_mouse = [mouseX, mouseY];
 
 function preload() {
     img = loadImage('soccerball.png');
@@ -14,11 +18,19 @@ function draw() {
     fill(255, 10, 10);
     textAlign(CENTER, TOP);
     textSize(40);
-    text("Happy Birthday\nCampbell!!", windowWidth * 0.5, y);
-    image(img, 0, 0, 200, 200);
-    if (y < -100) {
-        y = 400;
-    } else {
-        y--;
+    // text("Happy Birthday\nCampbell!!", windowWidth * 0.5, 20);
+    image(img, x, y, 100, 100);
+    x = x + xvel;
+    y = y + yvel;
+    if (x > windowWidth - 100 || x < 0) {
+      xvel = -xvel;
     }
+    if (y > 400 - 100 || y < 0) {
+      yvel = -yvel;
+    }
+    if (mouseIsPressed) {
+      xvel = mouseX - prev_mouse[0];
+      yvel = mouseY - prev_mouse[1];
+    }
+    prev_mouse = [mouseX, mouseY];
 }
