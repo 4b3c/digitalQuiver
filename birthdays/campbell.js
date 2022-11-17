@@ -33,3 +33,4 @@ function draw() {
     } else {
       yvel = yvel - 0.6;
     }
+}
