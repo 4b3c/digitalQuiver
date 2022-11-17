@@ -1,16 +1,14 @@
 let img;
-var x = 0;
+var x = 20;
 var y = 0;
-var xvel = 0;
-var yvel = 0;
-var prev_mouse = [mouseX, mouseY];
+var yvel = 5;
 
 function preload() {
     img = loadImage('soccerball.png');
 }
 
 function setup() {
-    createCanvas(windowWidth, 400);
+    createCanvas(windowWidth, windowHeight);
 }
 
 function draw() {
@@ -20,17 +18,18 @@ function draw() {
     textSize(40);
     // text("Happy Birthday\nCampbell!!", windowWidth * 0.5, 20);
     image(img, x, y, 100, 100);
-    x = x + xvel;
-    y = y + yvel;
-    if (x > windowWidth - 100 || x < 0) {
-      xvel = -xvel;
-    }
-    if (y > 400 - 100 || y < 0) {
-      yvel = -yvel;
-    }
     if (mouseIsPressed) {
-      xvel = mouseX - prev_mouse[0];
-      yvel = mouseY - prev_mouse[1];
+      yvel = 13;
     }
-    prev_mouse = [mouseX, mouseY];
-}
+    y = y - yvel;
+  
+    if (y > windowHeight - 100) {
+      y = windowHeight - 100;
+      if (Math.abs(yvel) > 2) {
+        yvel = -yvel * 0.5;
+      } else {
+        yvel = 0;
+      }
+    } else {
+      yvel = yvel - 0.6;
+    }
