@@ -1,24 +1,33 @@
 //declare variables
 let img;
-var x = 20;
-var y = 0;
+var x = 0;
+var y = 100
 var ballwh = [60, 60];
-var obstx = 0;
-var obstc = 0;
-
-//yvel = y (direction) velocity
-var yvel = 5;  
-var ground = 0;
+var first_click = false;
 var clicked = false;
 
-//level design
-var level1 = [1, 2, 1, 3, 2, 3, 1, 3]
+var obs1 = [0, 0, 0];
+var obs2 = [0, 0, 0];
+var obs3 = [0, 0, 0];
+
+var ins_text = ["instructions:", "tap the sides of the screen", "to dodge the obstacles"];
 
 //create a canvas the size of the window
 function setup() {
     createCanvas(windowWidth, windowHeight);
-    obstx = windowWidth;
-    ground = windowHeight - ballwh[1];
+    x = round(((windowWidth / 2) - (ballwh[0] / 2)) / 60) * 60;
+    y = windowHeight - (ballwh[1] * 2);
+    obs1[1] = -windowHeight * 1/3;
+    obs2[1] = -windowHeight * 2/3;
+    obs3[1] = -windowHeight;
+  
+    obs1[2] = random(100, 200);
+    obs2[2] = random(100, 200);
+    obs3[2] = random(100, 200);
+  
+    obs1[0] = random(0, windowWidth - obs1[2]);
+    obs2[0] = random(0, windowWidth - obs2[2]);
+    obs3[0] = random(0, windowWidth - obs3[2]);
 }
 
 //load the image of the soccerball
@@ -26,66 +35,81 @@ function preload() {
     img = loadImage('soccerball.png');
 }
 
-function draw_level(level, part, obstx) {
-    switch (level[part]) {
-        case 1:
-            fill(255, 20, 20);
-            rect(obstx, windowHeight - 50, 100, 50);
-            break;
-        case 2:
-            fill(20, 255, 20);
-            rect(obstx, windowHeight - 100, 100, 100);
-            break;
-        case 3:
-            fill(20, 20, 255);
-            rect(obstx, windowHeight - 150, 100, 150);
-            break;
+//mouse click interaction to move the ball
+function manage_mouse() {
+    //if you click the mouse
+    if (mouseIsPressed && !clicked) {
+        clicked = true;
+        first_click = true;
+        if (mouseX > windowWidth / 2 && x + ballwh[0] < windowWidth - ballwh[0]) {
+            //move ball to the right
+            x = x + ballwh[0];
+        } else if (mouseX < windowWidth / 2 && x - ballwh[0] > 0) {
+            //move ball to the left
+            x = x - ballwh[0];
+        }
+    } else if (!mouseIsPressed) {
+        clicked = false;
     }
+}
 
+//show instructions at the beginning
+function show_instructions() {
+    if (!first_click) {
+        fill(0);
+        textAlign(CENTER, CENTER);
+        textSize(30);
+        text(ins_text[0], windowWidth / 2, 100);
+        text(ins_text[1], windowWidth / 2, 150);
+        text(ins_text[2], windowWidth / 2, 200);
+    } else {
+        obs1[1] = obs1[1] + 5;
+        obs2[1] = obs2[1] + 5;
+        obs3[1] = obs3[1] + 5;
+    }
 }
 
 //draw function runs continuously
 function draw() {
     //clear the background and draw the soccerball
-    background(89, 213, 247);
+    background(70, 150, 70);
     image(img, x, y, ballwh[0], ballwh[1]);
-    
-    //if you click the mouse and (essentially) the ball is on the ground
-    if (mouseIsPressed && !clicked) {
-      //make the ball jump and make it so we can't double jump
-      yvel = 31;
-      y = ground;
-      clicked = true;
+  
+    manage_mouse();
+    show_instructions();
+  
+    fill(255, 0, 0);
+    rect(obs1[0], obs1[1], obs1[2], 50);
+    rect(obs2[0], obs2[1], obs2[2], 50);
+    rect(obs3[0], obs3[1], obs3[2], 50);
+  
+    if (obs1[1] > windowHeight) {
+        obs1[2] = round(random(60, 280) / 60) * 60;
+        obs1[0] = round(random(0, windowWidth - obs1[2]) / 60) * 60;
+        obs1[1] = -100;
+    } else if (obs2[1] > windowHeight) {
+        obs2[2] = round(random(60, 280) / 60) * 60;
+        obs2[0] = round(random(0, windowWidth - obs2[2]) / 60) * 60;
+        obs2[1] = -100;
+    } else if (obs3[1] > windowHeight) {
+        obs3[2] = round(random(60, 280) / 60) * 60;
+        obs3[0] = round(random(0, windowWidth - obs3[2]) / 60) * 60;
+        obs3[1] = -100;
     }
   
-    //if the ball is trying to fall out of the window
-    if (y > ground) {
-      //stop it from falling and reset our jump so we know its not a double jump
-      y = ground;
-      clicked = false;
-      
-      //if the velocity is still a decent amount when it hits the ground
-      if (Math.abs(yvel) > 2) {
-        //make it bounce with less force
-        yvel = -yvel * 0.4;
-      } else {
-        yvel = 0;
-      }
-    } else {
-      //accelerate towards the ground
-      yvel = yvel - 1.2;
-    }
 
-    //move the ball by the y velocity
-    y = y - yvel;
-
-    draw_level(level1, obstc, obstx);
-    obstx = obstx - 5;
-    if (obstx < -100) {
-        obstx = windowWidth;
-        obstc = obstc + 1;
-        if (obstc == level1.length) {
-            obstc = 0;
+    if (obs1[1] + 60 > y && obs1[1] < y + ballwh[1]) {
+        if (obs1[0] + obs1[2] > x && obs1[0] < x + ballwh[0]) {
+            text("YOU DIED", 80, 30);
         }
-    } 
+    } else if (obs2[1] + 60 > y && obs2[1] < y + ballwh[1]) {
+        if (obs2[0] + obs2[2] > x && obs2[0] < x + ballwh[0]) {
+            text("YOU DIED", 80, 30);
+        }
+    } else if (obs3[1] + 60 > y && obs3[1] < y + ballwh[1]) {
+        if (obs3[0] + obs3[2] > x && obs3[0] < x + ballwh[0]) {
+            text("YOU DIED", 80, 30);
+        }
+    }
+    
 }
