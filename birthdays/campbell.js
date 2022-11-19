@@ -16,10 +16,10 @@ var ins_text = ["instructions:", "tap the sides of the screen", "to dodge the ob
 //create a canvas the size of the window
 function setup() {
     createCanvas(windowWidth, windowHeight);
-    ballwh[0] = windowWidth / 11;
+    ballwh[0] = windowWidth / 7;
     ballwh[1] = ballwh[0];
     x = round(windowWidth / ballwh[0]) * ballwh[0];
-    x = x - (ballwh[0] * 6);
+    x = x - (ballwh[0] * 4);
     y = windowHeight - (ballwh[1] * 2);
     obs1[1] = -windowHeight * 1/3;
     obs2[1] = -windowHeight * 2/3;
@@ -71,6 +71,11 @@ function show_instructions() {
         obs1[1] = obs1[1] + 5;
         obs2[1] = obs2[1] + 5;
         obs3[1] = obs3[1] + 5;
+      
+        fill(0);
+        textSize(windowHeight / 24);
+        textAlign(LEFT, TOP);
+        text("Points: " + score, 30, 50);
     }
 }
 
@@ -84,14 +89,9 @@ function draw() {
     show_instructions();
   
     fill(255, 0, 0);
-    rect(obs1[0], obs1[1], obs1[2], 50);
-    rect(obs2[0], obs2[1], obs2[2], 50);
-    rect(obs3[0], obs3[1], obs3[2], 50);
-  
-    fill(0);
-    textSize(windowHeight / 24);
-    textAlign(LEFT, TOP);
-    text("Points: " + score, 30, 50);
+    rect(obs1[0], obs1[1], obs1[2], ballwh[0]);
+    rect(obs2[0], obs2[1], obs2[2], ballwh[0]);
+    rect(obs3[0], obs3[1], obs3[2], ballwh[0]);
   
     if (obs1[1] > windowHeight) {
         obs1[2] = round(random(ballwh[0], ballwh[0] * 4) / ballwh[0]) * ballwh[0];
