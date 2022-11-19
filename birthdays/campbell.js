@@ -44,7 +44,7 @@ function manage_mouse() {
         if (mouseX > windowWidth / 2 && x + ballwh[0] < windowWidth - ballwh[0]) {
             //move ball to the right
             x = x + ballwh[0];
-        } else if (mouseX < windowWidth / 2 && x - ballwh[0] > 0) {
+        } else if (mouseX < windowWidth / 2 && x - ballwh[0] >= 0) {
             //move ball to the left
             x = x - ballwh[0];
         }
