@@ -9,14 +9,14 @@ var score = 0;
 var scene = 0;
 var obs_vel = 0;
 
-var win_score = 10;
+var win_score = 20;
 
 var obs1 = [0, 0, 0];
 var obs2 = [0, 0, 0];
 var obs3 = [0, 0, 0];
 var goal_y = -200;
 
-var ins_text = ["game instructions:", "tap the sides of the screen", "to dodge the obstacles"];
+var ins_text = ["game instructions:", "tap the sides of the screen", "to dodge the obstacles", "and get the ball in the goal!"];
 
 //create a canvas the size of the window
 function setup() {
@@ -76,6 +76,7 @@ function draw() {
         noFill();
         var ww = windowWidth;
         var wh = windowHeight;
+        stroke(0);
         bezier(ww * 0.6, wh * 0.9, ww * 0.3, wh * 0.6, ww * 0.9, wh * 0.9, ww * 0.8, wh * 0.6 + 75);
         bezier(ww * 0.2, wh * 0.7, ww * 0.3, wh * 0.2, ww * 0.1, wh * 0.8, ww * 0.2, wh * 0.3 + 75);
       
@@ -85,6 +86,7 @@ function draw() {
         textAlign(CENTER, CENTER);
         textSize(windowWidth / 10);
         fill(255, 0, 0);
+        noStroke();
         text("HAPPY BIRTHDAY", windowWidth / 2, windowHeight * 0.2);
         text("CAMPBELL!!!", windowWidth / 2, windowHeight * 0.3);
         fill(0);
@@ -92,6 +94,7 @@ function draw() {
         text(ins_text[0], windowWidth / 2, windowHeight * 0.6);
         text(ins_text[1], windowWidth / 2, windowHeight * 0.65);
         text(ins_text[2], windowWidth / 2, windowHeight * 0.7);
+        text(ins_text[3], windowWidth / 2, windowHeight * 0.75);
         textSize(windowWidth / 18);
         text("play!", windowWidth / 2, windowHeight / 2);
         if (mouseIsPressed && mouseX > (windowWidth / 2) - 140 && mouseX < (windowWidth / 2) + 140) {
@@ -204,11 +207,6 @@ function draw() {
         obs2[1] = obs2[1] + obs_vel;
         obs3[1] = obs3[1] + obs_vel;
       
-        fill(0);
-        textSize(windowHeight / 24);
-        textAlign(LEFT, TOP);
-        text("Points: " + score, 30, 50);
-      
         if (score == win_score) {
             scene = 3;
         }
@@ -220,6 +218,7 @@ function draw() {
         fill(0);
         textAlign(CENTER, CENTER);
         textSize(windowWidth / 10);
+        noStroke();
         text("you died :/", windowWidth / 2, windowHeight * 0.2);
         textSize(windowWidth / 18);
         text("score: " + score, windowWidth / 2, windowHeight * 0.4);
@@ -253,6 +252,7 @@ function draw() {
         noFill();
         var ww = windowWidth;
         var wh = windowHeight;
+        stroke(0);
         bezier(ww * 0.7, wh * 0.9, ww * 0.5, wh * 1.0, ww * 1.1, wh * 0.8, ww * 0.8, wh * 0.6 + 75);
         bezier(ww * 0.2, wh * 0.7, ww * 0.3, wh * 0.2, ww * 0.1, wh * 0.8, ww * 0.3, wh * 0.4 + 75);
       
@@ -262,6 +262,7 @@ function draw() {
         fill(0);
         textAlign(CENTER, CENTER);
         textSize(windowWidth / 30);
+        noStroke();
         text("you did it!... HAPPY BIRTHDAY!!", windowWidth / 2, windowHeight * 0.18);
         textAlign(LEFT, CENTER);
         text("have fun being 17 and extremely old 🤪", 50, windowHeight * 0.23);
