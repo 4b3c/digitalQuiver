@@ -15,8 +15,12 @@ var ver = 0;
 //use this variable so the loop can run multiple times instead of once per turn
 var next_turn = true;
 
+function setup() {
+    createCanvas(400, 400);
+}
+
 //create a function to draw the squares and numbers, to use later
-var draw_screen = function() {
+function draw_screen() {
     //color the background so it isn't just white
     background(210);
     //go through the four vertical rows
@@ -38,7 +42,7 @@ var draw_screen = function() {
     }
 };
 
-draw = function() {
+function draw() {
     //if we're good to add a new number
     if (next_turn === true && keyIsPressed === false) {
         //generate either a 2 or a 4
