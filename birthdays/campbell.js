@@ -7,6 +7,7 @@ var first_click = false;
 var clicked = false;
 var score = 0;
 var scene = 0;
+var obs_vel = 0;
 
 var obs1 = [0, 0, 0];
 var obs2 = [0, 0, 0];
@@ -33,6 +34,8 @@ function setup() {
     obs1[0] = round(random(0, windowWidth - obs1[2]) / ballwh[0]) * ballwh[0];
     obs2[0] = round(random(0, windowWidth - obs2[2]) / ballwh[0]) * ballwh[0];
     obs3[0] = round(random(0, windowWidth - obs3[2]) / ballwh[0]) * ballwh[0];
+  
+    obs_vel = 5 * (windowHeight / windowWidth);
 }
 
 //load the image of the soccerball
@@ -139,9 +142,9 @@ function draw() {
             }
         }
       
-        obs1[1] = obs1[1] + 5;
-        obs2[1] = obs2[1] + 5;
-        obs3[1] = obs3[1] + 5;
+        obs1[1] = obs1[1] + obs_vel;
+        obs2[1] = obs2[1] + obs_vel;
+        obs3[1] = obs3[1] + obs_vel;
       
         fill(0);
         textSize(windowHeight / 24);
