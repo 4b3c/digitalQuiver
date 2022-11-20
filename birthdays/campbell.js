@@ -9,9 +9,12 @@ var score = 0;
 var scene = 0;
 var obs_vel = 0;
 
+var win_score = 10;
+
 var obs1 = [0, 0, 0];
 var obs2 = [0, 0, 0];
 var obs3 = [0, 0, 0];
+var goal_y = -200;
 
 var ins_text = ["game instructions:", "tap the sides of the screen", "to dodge the obstacles"];
 
@@ -100,7 +103,6 @@ function draw() {
           clicked = false;
         }
     } else if (scene == 1) {
-        //clear the background and draw the soccerball
         image(img, x, y, ballwh[0], ballwh[1]);
 
         manage_mouse();
@@ -113,18 +115,74 @@ function draw() {
         if (obs1[1] > windowHeight) {
             obs1[2] = round(random(ballwh[0], ballwh[0] * 4) / ballwh[0]) * ballwh[0];
             obs1[0] = round(random(0, windowWidth - obs1[2]) / ballwh[0]) * ballwh[0];
-            obs1[1] = -100;
+            if (score < win_score - 4) {
+                obs1[1] = -100;
+            } else {
+                obs1[1] = -10000;
+            }
             score++;
         } else if (obs2[1] > windowHeight) {
             obs2[2] = round(random(ballwh[0], ballwh[0] * 4) / ballwh[0]) * ballwh[0];
             obs2[0] = round(random(0, windowWidth - obs2[2]) / ballwh[0]) * ballwh[0];
-            obs2[1] = -100;
+            if (score < win_score - 4) {
+                obs2[1] = -100;
+            } else {
+                obs2[1] = -10000;
+            }
             score++;
         } else if (obs3[1] > windowHeight) {
             obs3[2] = round(random(ballwh[0], ballwh[0] * 4) / ballwh[0]) * ballwh[0];
             obs3[0] = round(random(0, windowWidth - obs3[2]) / ballwh[0]) * ballwh[0];
-            obs3[1] = -100;
+            if (score < win_score - 4) {
+                obs3[1] = -100;
+            } else {
+                obs3[1] = -10000;
+            }
             score++;
+        }
+      
+        if (score == win_score - 1) {
+          background(70, 150, 70);
+          image(img, x, y, ballwh[0], ballwh[1]);
+          
+          noStroke();
+          fill(255);
+          rect(windowWidth / 2 - 100, goal_y, 10, 100, 5);
+          rect(windowWidth / 2 + 100, goal_y, 10, 100, 5);
+          rect(windowWidth / 2 - 100, goal_y + 95, 210, 10, 5);
+
+          stroke(255);
+          line(windowWidth / 2 + 80, goal_y, windowWidth / 2 + 100, goal_y + 9);
+          line(windowWidth / 2 + 40, goal_y, windowWidth / 2 + 100, goal_y + 25);
+          line(windowWidth / 2, goal_y, windowWidth / 2 + 100, goal_y + 45);
+          line(windowWidth / 2 - 40, goal_y, windowWidth / 2 + 100, goal_y + 65);
+          line(windowWidth / 2 - 80, goal_y, windowWidth / 2 + 100, goal_y + 85);
+
+          line(windowWidth / 2 - 100, goal_y + 10, windowWidth / 2 + 80, goal_y + 95);
+          line(windowWidth / 2 - 100, goal_y + 30, windowWidth / 2 + 40, goal_y + 95);
+          line(windowWidth / 2 - 100, goal_y + 50, windowWidth / 2, goal_y + 95);
+          line(windowWidth / 2 - 100, goal_y + 70, windowWidth / 2 - 40, goal_y + 95);
+
+          line(windowWidth / 2 + 80, goal_y, windowWidth / 2 - 100, goal_y + 85);
+          line(windowWidth / 2 + 40, goal_y, windowWidth / 2 - 100, goal_y + 65);
+          line(windowWidth / 2, goal_y, windowWidth / 2 - 100, goal_y + 45);
+          line(windowWidth / 2 - 40, goal_y, windowWidth / 2 - 100, goal_y + 25);
+          line(windowWidth / 2 - 80, goal_y, windowWidth / 2 - 100, goal_y + 9);
+
+          line(windowWidth / 2 + 100, goal_y + 70, windowWidth / 2 + 50, goal_y + 95);
+          line(windowWidth / 2 + 100, goal_y + 50, windowWidth / 2 + 10, goal_y + 95);
+          line(windowWidth / 2 + 100, goal_y + 30, windowWidth / 2 - 30, goal_y + 95);
+          line(windowWidth / 2 + 100, goal_y + 10, windowWidth / 2 - 70, goal_y + 95);
+          noStroke();
+          
+          manage_mouse();
+          
+          goal_y = goal_y + obs_vel / 3;
+          
+          if (goal_y > y) {
+            score++;
+            goal_y = -200;
+          }
         }
 
 
@@ -151,7 +209,7 @@ function draw() {
         textAlign(LEFT, TOP);
         text("Points: " + score, 30, 50);
       
-        if (score == 30) {
+        if (score == win_score) {
             scene = 3;
         }
       
