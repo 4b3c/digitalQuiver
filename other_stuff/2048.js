@@ -44,7 +44,7 @@ function draw_screen() {
 
 function draw() {
     //if we're good to add a new number
-    if (next_turn === true && keyIsPressed === false) {
+    if (next_turn == true && keyIsPressed == false) {
         //generate either a 2 or a 4
         new_number = round(random(1, 2));
         new_number = new_number * 2;
@@ -54,7 +54,7 @@ function draw() {
         ver = round(random(0, 3));
         
         //if the random place we picked is okay, place it there
-        if (array[ver][hor] === 0) {
+        if (array[ver][hor] == 0) {
             array[ver][hor] = new_number;
         //otherwise find a new place to put it
         } else {
@@ -76,7 +76,7 @@ function draw() {
     }
     
     //All the arrow keys do different things
-    if (keyIsPressed && keyCode === UP) {
+    if (keyIsPressed && keyCode == UP) {
         for (var j = 1; j < 4; j+=1) {
             for (var i = 0; i < 4; i+=1) {
                 //if we hit a number (that isn't zero)
@@ -96,7 +96,7 @@ function draw() {
         }
         next_turn = true;
     }
-    if (keyIsPressed && keyCode === DOWN) {
+    if (keyIsPressed && keyCode == DOWN) {
         for (var j = 2; j > -1; j-=1) {
             for (var i = 0; i < 4; i+=1) {
                 //if we hit a number (that isn't zero)
@@ -116,7 +116,7 @@ function draw() {
         }
         next_turn = true;
     }
-    if (keyIsPressed && keyCode === LEFT) {
+    if (keyIsPressed && keyCode == LEFT) {
         for (var i = 1; i < 4; i+=1) {
             for (var j = 0; j < 4; j+=1) {
                 //if we hit a number (that isn't zero)
@@ -136,7 +136,7 @@ function draw() {
         }
         next_turn = true;
     }
-    if (keyIsPressed && keyCode === RIGHT) {
+    if (keyIsPressed && keyCode == RIGHT) {
         next_turn = true;
     }
     
