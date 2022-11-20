@@ -35,7 +35,7 @@ function setup() {
     obs2[0] = round(random(0, windowWidth - obs2[2]) / ballwh[0]) * ballwh[0];
     obs3[0] = round(random(0, windowWidth - obs3[2]) / ballwh[0]) * ballwh[0];
   
-    obs_vel = 5 * (windowHeight / windowWidth);
+    obs_vel = 8 * (windowHeight / windowWidth);
 }
 
 //load the image of the soccerball
