@@ -3,7 +3,7 @@ function setup() {
 }
 
 function preload() {
-  img = loadImage('https://cdn.discordapp.com/attachments/1055600831442997351/1078401815328075836/abstractart.jpg');
+    img = loadImage('abstractart.jpg');
 }
 
 function draw() {
