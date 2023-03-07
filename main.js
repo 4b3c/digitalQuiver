@@ -1,5 +1,6 @@
 var obj_scroll = 0;
 var scroll = 0;
+var anim_speed = 0.3;
 
 var left;
 var right;
@@ -7,11 +8,9 @@ var top_left;
 var top_right;
 var bottom;
 var scrl_hgt;
+var radius;
 
-var button_1;
-var button_2;
-var button_3;
-var button_4;
+var but_h;
 
 function setup() {
 	createCanvas(windowWidth, windowHeight * 2);
@@ -23,84 +22,132 @@ function setup() {
 	top_right = windowHeight * 0.85;
 	bottom = windowHeight * 2;
 	scrl_hgt = windowHeight * obj_scroll;
+	radius = Math.sqrt((windowHeight * windowHeight) + ((windowWidth - 350) * (windowWidth - 350)));
 
-	button_1 = [0, windowHeight * 0.77, 420, [0, 0]];
-	button_2 = [300, windowHeight * 0.77, 280, [0, 0]];
-	button_3 = [600, windowHeight * 0.77, 140, [0, 0]];
-	button_4 = [900, windowHeight * 0.77, 0, [0, 0]];
+	but_h = windowHeight * 0.77;
+
+	buttons = [
+		new Button(0, but_h, 420, "Python Projects", 1/2, 1),
+		new Button(300, but_h, 280, "JS Projects", 1/1.27, 2),
+		new Button(600, but_h, 140, "Birthday Sites", 1.27, 3),
+		new Button(900, but_h, 0, "About Me", 2, 4)
+		];
+	main_button = new Button(0, but_h, 560, "Welcome Page", 1/3, 0);
 }
 
 function mouseWheel(event) {
-  scroll = scroll + event.delta / 450;
-  scroll = constrain(scroll, 0, 2);
-}
-
-function checkHover(button) {
-	if (mouseY > button[3][1] + 90) {
-		return 120;
-	}
-	if (mouseX > button[3][0] + 250) {
-		return 120;
-	}
-	if (mouseX < button[3][0]) {
-	  	return 120;
-	}
-	if (mouseY < button[3][1]) {
-		return 120;
-	}
-	return 170;
+  scroll = scroll + event.delta / 1100;
+  scroll = constrain(scroll, 0, 4);
 }
 
 function draw() {
-	background(120);
 
 	if (scroll != obj_scroll) {
-		obj_scroll += (scroll - obj_scroll) * 0.3;
+		obj_scroll += (scroll - obj_scroll) * anim_speed;
 		obj_scroll = Math.round(obj_scroll * 100000) / 100000;
+		if (Math.round(obj_scroll) == Math.round(obj_scroll * 10) / 10) {
+			anim_speed = 0.3;
+		}
 	}
 
-	fill(100, 40, 50);
-	noStroke();
-	scrl_hgt = windowHeight * obj_scroll;
-	quad(left, top_left - scrl_hgt, right, top_right - scrl_hgt, right, bottom, left, bottom);
+	if (obj_scroll >= 0 && (Math.round(obj_scroll * 100) / 100) < 1) {
+		background(120, 120, 120);
+		fill(100, 40, 50);
+		noStroke();
+		scrl_hgt = windowHeight * obj_scroll;
+		quad(left, top_left - scrl_hgt, right, top_right - scrl_hgt, right, bottom, left, bottom);
+	} else if ((Math.round(obj_scroll * 100) / 100) >= 1 && obj_scroll < 2) {
+		background(100, 40, 50);
+		noStroke();
+		fill(80, 70, 100);
+		ellipse(350, 0, 2 * (radius * (obj_scroll - 1)), 2 * (radius * (obj_scroll - 1)));
 
-	stroke(1);
-	button_1[3][0] = 50 + button_1[0] * (1 - pow(obj_scroll, 1/2));
-	button_2[3][0] = 50 + button_2[0] * (1 - pow(obj_scroll, 1/1.27));
-	button_3[3][0] = 50 + button_3[0] * (1 - pow(obj_scroll, 1.27));
-	button_4[3][0] = 50 + button_4[0] * (1 - pow(obj_scroll, 2));
+		fill(100, 40, 50);
+		rect(0, 0, 350, windowHeight);
 
-	button_1[3][1] = button_1[1] - (button_1[2] * pow(obj_scroll, 1/2));
-	button_2[3][1] = button_2[1] - (button_2[2] * pow(obj_scroll, 1/1.27));
-	button_3[3][1] = button_3[1] - (button_3[2] * pow(obj_scroll, 1.27));
-	button_4[3][1] = button_4[1] - (button_4[2] * pow(obj_scroll, 2));
+		main_button.draw(obj_scroll);
+	} else if (obj_scroll >= 2 && obj_scroll < 3) {
+		background(80, 70, 100);
+		noStroke();
+		fill(0, 110, 110);
+		ellipse(350, 0, 2 * (radius * (obj_scroll - 2)), 2 * (radius * (obj_scroll - 2)));
 
-	fill(checkHover(button_1));
-	rect(button_1[3][0], button_1[3][1], 250, 90, 15);
+		fill(100, 40, 50);
+		rect(0, 0, 350, windowHeight);
+
+		main_button.draw(obj_scroll);
+	} else if (obj_scroll >= 3 && obj_scroll < 4) {
+		background(80, 70, 100);
+		noStroke();
+		fill(80, 60, 10);
+		ellipse(350, 0, 2 * (radius * (obj_scroll - 3)), 2 * (radius * (obj_scroll - 3)));
+
+		fill(100, 40, 50);
+		rect(0, 0, 350, windowHeight);
+
+		main_button.draw(obj_scroll);
+	}
+
+	for (var i = 0; i < buttons.length; i++) {
+		buttons[i].draw(obj_scroll);
+	}
+
+}
+
+
+class Button {
+	constructor(x0, y0, y1, text, pow, scroll_set) {
+		this.x0 = x0;
+		this.xCur = x0;
+		this.y0 = y0;
+		this.yCur = y0;
+		this.y1 = y1;
+		this.text = text;
+		this.pow = pow;
+		this.scroll_set = scroll_set;
+	}
+
+	checkHover(x, y) {
+		if (y > this.yCur + 90) {
+		return 120;
+		}
+		if (x > this.xCur + 250) {
+			return 120;
+		}
+		if (x < this.xCur) {
+		  	return 120;
+		}
+		if (y < this.yCur) {
+			return 120;
+		}
+		if (mouseIsPressed) {
+			scroll = this.scroll_set;
+			anim_speed = 0.1;
+		}
+		return 170;
+	}
+
+	draw(scroll) {
+		if (scroll > this.scroll_set - 0.5 && scroll < this.scroll_set + 0.5) {
+			fill(170);
+			var button_scroll = min(scroll, 1);
+			this.xCur = 50 + this.x0 * (1 - pow(button_scroll, this.pow));
+			this.yCur = this.y0 - (this.y1 * pow(button_scroll, this.pow));
+		} else {
+			var button_scroll = min(scroll, 1);
+			this.xCur = 50 + this.x0 * (1 - pow(button_scroll, this.pow));
+			this.yCur = this.y0 - (this.y1 * pow(button_scroll, this.pow));
+			fill(this.checkHover(mouseX, mouseY));
+		}
 	
-	fill(checkHover(button_2));
-	rect(button_2[3][0], button_2[3][1], 250, 90, 15);
-	
-	fill(checkHover(button_3));
-	rect(button_3[3][0], button_3[3][1], 250, 90, 15);
-	
-	fill(checkHover(button_4));
-	rect(button_4[3][0], button_4[3][1], 250, 90, 15);
+		stroke(1);
+		rect(this.xCur, this.yCur, 250, 90, 15);
 
-	fill(0);
-	noStroke();
-	textAlign(CENTER);
-	textSize(25);
-	text("Python Projects", 120 + button_1[3][0], 55 + button_1[3][1]);
-	text("JS Projects", 120 + button_2[3][0], 55 + button_2[3][1]);
-	text("Birthday Sites", 120 + button_3[3][0], 55 + button_3[3][1]);
-	text("About Me", 120 + button_4[3][0], 55 + button_4[3][1]);
+		fill(0);
+		noStroke();
+		textAlign(CENTER);
+		textSize(25);
+		text(this.text, 120 + this.xCur, 55 + this.yCur);
 
-	// fill(255);
-	// textSize(15);
-	// text(mouseX + ", " + mouseY, mouseX + 20, mouseY - 30);
-	// text(button_1[3][0] + ", " + button_1[3][1], mouseX + 20, mouseY - 70);
-
-	// ellipse(50 + 300, windowHeight * 0.572, 5)
-
+	}
 }
