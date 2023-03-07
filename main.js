@@ -36,7 +36,7 @@ function setup() {
 }
 
 function preload() {
-    img = loadImage('AbstractTriangleArt.png');
+    img = loadImage('images/AbstractTriangleArt.png');
 }
 
 function mouseWheel(event) {
