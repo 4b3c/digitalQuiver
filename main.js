@@ -41,15 +41,17 @@ function setup() {
     ];
 
   robotics_projects = [
-    new ClickableText(500, 200, "• WikiShorts", "https://github.com/4b3c/WikiShorts"),
-    new ClickableText(500, 290, "• MNIST Machine Learning", "https://github.com/4b3c/mnist_machine_learning"),
-    new ClickableText(500, 380, "• Images to characters", "https://github.com/4b3c/image-to-character-art")
+    new ClickableText(500, 200, "• CocoNuts 2023", "https://github.com/Coconuts2486-FRC/FRC-2023"),
+    new ClickableText(500, 290, "• Bezier Curve Path Planner", "https://github.com/4b3c/bezier-curves"),
+    new ClickableText(500, 380, "• Swerve Drive", "https://github.com/4b3c/RecusantDrive")
     ];
 
   other_projects = [
-    new ClickableText(500, 200, "• WikiShorts", "https://github.com/4b3c/WikiShorts"),
-    new ClickableText(500, 290, "• MNIST Machine Learning", "https://github.com/4b3c/mnist_machine_learning"),
-    new ClickableText(500, 380, "• Images to characters", "https://github.com/4b3c/image-to-character-art")
+    new ClickableText(500, 200, "• Reddit Coddit", "https://4b3c.github.io/reddit-coddit-site/"),
+    new ClickableText(500, 290, "• useles-converter-bot", "https://github.com/4b3c/useles-converter-bot")
+    ];
+  about_me = [
+    new ClickableText(500, 200, "• nothing here yet", "https://example.com")
     ];
 }
 
@@ -74,10 +76,11 @@ function draw() {
 
 	if (obj_scroll >= 0 && (Math.round(obj_scroll * 100) / 100) < 1) {
 		image(img, 0, 0);
-		fill(100, 40, 50);
-		noStroke();
-		scrl_hgt = (windowHeight * obj_scroll) * 0.9;
-		quad(left, top_left - scrl_hgt, right, top_right - scrl_hgt, right, bottom, left, bottom);
+
+    fill(100, 40, 50);
+    noStroke();
+    scrl_hgt = (windowHeight * obj_scroll) * 0.9;
+    quad(left, top_left - scrl_hgt, right, top_right - scrl_hgt, right, bottom, left, bottom);
 
 		fill(255);
 		noStroke();
@@ -93,8 +96,11 @@ function draw() {
 		textStyle(NORMAL);
 
     for (var i = 0; i < python_projects.length; i++) {
-      python_projects[i].draw((obj_scroll - 1), (scroll - 0.5) * 310);
+      python_projects[i].draw((obj_scroll - 1), 255);
     }
+
+    fill(100, 40, 50);
+    quad(left, top_left - scrl_hgt, 350, (top_right * 0.675) - scrl_hgt, 350, bottom, left, bottom);
 
     main_button.draw(obj_scroll, (scroll - 0.5) * 310);
 	} else if ((Math.round(obj_scroll * 100) / 100) >= 1 && obj_scroll < 2) {
@@ -139,6 +145,13 @@ function draw() {
 
     for (var i = 0; i < other_projects.length; i++) {
       other_projects[i].draw(obj_scroll - 3, 255);
+    }
+
+    for (var i = 0; i < other_projects.length; i++) {
+      other_projects[i].draw(obj_scroll - 3, 255);
+    }
+    for (var i = 0; i < about_me.length; i++) {
+      about_me[i].draw(obj_scroll - 4, 255);
     }
 
     fill(100, 40, 50);
@@ -247,7 +260,11 @@ class ClickableText {
   }
 
   draw(scroll, a) {
-    var rg = this.checkHover(mouseX, mouseY, scroll);
+    if (mouseX > 350) {
+      var rg = this.checkHover(mouseX, mouseY, scroll);
+    } else {
+      var rg = 255;
+    }
     fill(rg, rg, 255, a);
   
     noStroke();
