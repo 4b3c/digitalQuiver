@@ -28,11 +28,15 @@ function setup() {
 
 	buttons = [
 		new Button(0, but_h, 420, "Python Projects", 1/2, 1),
-		new Button(300, but_h, 280, "JS Projects", 1/1.27, 2),
+		new Button(300, but_h, 280, "Robotics", 1/1.27, 2),
 		new Button(600, but_h, 140, "Birthday Sites", 1.27, 3),
 		new Button(900, but_h, 0, "About Me", 2, 4)
 		];
 	main_button = new Button(0, but_h, 560, "Welcome Page", 1/3, 0);
+}
+
+function preload() {
+    img = loadImage('AbstractTriangleArt.png');
 }
 
 function mouseWheel(event) {
@@ -51,11 +55,25 @@ function draw() {
 	}
 
 	if (obj_scroll >= 0 && (Math.round(obj_scroll * 100) / 100) < 1) {
-		background(120, 120, 120);
+		image(img, 0, 0);
 		fill(100, 40, 50);
 		noStroke();
 		scrl_hgt = windowHeight * obj_scroll;
 		quad(left, top_left - scrl_hgt, right, top_right - scrl_hgt, right, bottom, left, bottom);
+
+		fill(255);
+		noStroke();
+		textAlign(CENTER);
+		textSize(120);
+		text("digital", 990 - scrl_hgt, 250 - (scrl_hgt * 0.6));
+		textSize(140);
+		textStyle(BOLD);
+		text("Quiver", 1380 - scrl_hgt, 250 - (scrl_hgt * 0.6));
+		textSize(40);
+		textStyle(ITALIC)
+		text("abram's projects", 1460 - scrl_hgt, 300 - (scrl_hgt * 0.6));
+		textStyle(NORMAL);
+
 	} else if ((Math.round(obj_scroll * 100) / 100) >= 1 && obj_scroll < 2) {
 		background(100, 40, 50);
 		noStroke();
@@ -64,6 +82,12 @@ function draw() {
 
 		fill(100, 40, 50);
 		rect(0, 0, 350, windowHeight);
+
+		fill(255);
+		noStroke();
+		textAlign(CENTER);
+		textSize(60);
+		text("• WikiShorts", 660, 200);
 
 		main_button.draw(obj_scroll);
 	} else if (obj_scroll >= 2 && obj_scroll < 3) {
