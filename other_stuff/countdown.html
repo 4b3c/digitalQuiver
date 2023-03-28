@@ -7,11 +7,41 @@
         font-size: 5vh;
         text-align: center;
         margin-top: 22vh;
+        margin-bottom: 8vh;
         color: white;
         background-color: rgb(50, 50, 70);
       }
+      .spinner1 {
+        height: 5vh;
+        width: 5vh;
+
+        align-self: center;
+
+        border: 0.2vh solid rgb(255, 255, 255);
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+      .rotate1 {
+        animation: rotation1 3s infinite linear;
+      }
+
+      @keyframes rotation1 {
+        0% {
+          transform: rotate(0deg);
+          border-radius: 3%;
+        }
+        50% {
+          transform: rotate(179deg);
+          border-radius: 50%;
+        }
+        100% {
+          transform: rotate(359deg);
+          border-radius: 3%;
+        }
+      }
       body {
         background-color: rgb(50, 50, 70);
+        display: flex;
+        flex-direction: column;
       }
     </style>
   </head>
@@ -39,5 +69,7 @@
         }
       }, 1000);
     </script>
+
+    <div class="spinner1 rotate1"></div>
   </body>
 </html>
