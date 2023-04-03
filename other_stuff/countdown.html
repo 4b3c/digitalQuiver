@@ -11,7 +11,7 @@
         color: white;
         background-color: rgb(50, 50, 70);
       }
-      .spinner1 {
+      .spinner {
         height: 5vh;
         width: 5vh;
 
@@ -20,22 +20,30 @@
         border: 0.2vh solid rgb(255, 255, 255);
         background-color: rgba(255, 255, 255, 0.1);
       }
-      .rotate1 {
-        animation: rotation1 3s infinite linear;
+      .rotate {
+        animation: rotation 3s infinite linear;
       }
 
-      @keyframes rotation1 {
+      @keyframes rotation {
         0% {
           transform: rotate(0deg);
+          border-radius: 50%;
+        }
+        25% {
+          transform: rotate(179deg);
           border-radius: 3%;
         }
         50% {
-          transform: rotate(179deg);
+          transform: rotate(359deg);
           border-radius: 50%;
         }
-        100% {
-          transform: rotate(359deg);
+        75% {
+          transform: rotate(179deg);
           border-radius: 3%;
+        }
+        100% {
+          transform: rotate(0deg);
+          border-radius: 50%;
         }
       }
       body {
@@ -49,7 +57,7 @@
     <div class="timer" id="countdown"></div>
 
     <script>
-      var countDownDate = new Date("April 11, 2023 12:00:00").getTime();
+      var countDownDate = new Date("April 7, 2023 12:00:00").getTime();
 
       var x = setInterval(function() {
         var now = new Date().getTime();
@@ -70,6 +78,6 @@
       }, 1000);
     </script>
 
-    <div class="spinner1 rotate1"></div>
+    <div class="spinner rotate"></div>
   </body>
 </html>
