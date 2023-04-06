@@ -7,7 +7,7 @@
         font-size: 5vh;
         text-align: center;
         margin-top: 22vh;
-        margin-bottom: 8vh;
+        margin-bottom: 4vh;
         color: white;
         background-color: rgb(50, 50, 70);
       }
@@ -69,11 +69,11 @@
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
         document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
-        + minutes + "m " + seconds + "s ";
+        + minutes + "m " + seconds + "s";
 
         if (distance < 0) {
           clearInterval(x);
-          document.getElementById("countdown").innerHTML = "EXPIRED";
+          document.getElementById("countdown").innerHTML = ":)";
         }
       }, 1000);
     </script>
