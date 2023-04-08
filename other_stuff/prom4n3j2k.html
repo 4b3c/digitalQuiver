@@ -5,7 +5,6 @@
 	<style>
 		body {
 			background-color: rgb(50, 50, 70);
-			overflow-x: hidden;
 		}
 		
 		h1 {
@@ -21,8 +20,7 @@
 
 		.confetti_launcher_area {
 			height: 30vw;
-			display: flex;
-			justify-content: space-between;
+			overflow-x: hidden;
 		}
 		.confetti_launcher {
 			content: "";
@@ -39,7 +37,7 @@
 	<h1>Can I take you to your prom?</h1>
 	<div class="confetti_launcher_area">
 		<div class="confetti_launcher" style="transform: rotate(35deg);"></div>
-		<div class="confetti_launcher" style="transform: rotate(-35deg);"></div>
+		<div class="confetti_launcher" style="transform: rotate(-35deg); float: right;"></div>
 	</div>
 </body>
 </html>
