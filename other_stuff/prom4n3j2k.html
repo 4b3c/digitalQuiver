@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Prom Invitation </title>
+	<style>
+		body {
+			background-color: rgb(50, 50, 70);
+			overflow-x: hidden;
+		}
+		
+		h1 {
+			width: 80vw;
+			margin-left: 10vw;
+			font-size: 20vw;
+			font-weight: bold;
+			color: rgb(150, 150, 230);
+			text-align: center;
+			margin-top: 100px;
+			text-shadow: 10px 10px 0 rgb(50, 50, 50);
+		}
+
+		.confetti_launcher_area {
+			height: 30vw;
+			display: flex;
+			justify-content: space-between;
+		}
+		.confetti_launcher {
+			content: "";
+			width: 10vw;
+			height: 30vw;
+			border-radius: 18px;
+			background-color: rgb(240, 240, 40);
+			display: inline-block;
+		}
+		
+	</style>
+</head>
+<body>
+	<h1>Can I take you to your prom?</h1>
+	<div class="confetti_launcher_area">
+		<div class="confetti_launcher" style="transform: rotate(35deg);"></div>
+		<div class="confetti_launcher" style="transform: rotate(-35deg);"></div>
+	</div>
+</body>
+</html>
