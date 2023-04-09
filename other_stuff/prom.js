@@ -6,7 +6,7 @@ function setup() {
 	vw = windowWidth;
 	vh = windowHeight
 
-	all_confetti = new lots_of_it(100);
+	all_confetti = new lots_of_it(60);
 }
 
 function draw() {
@@ -28,10 +28,27 @@ function draw() {
 	textAlign(CENTER);
 	textWidth(vw);
 	fill(0, 0, 0);
-	text("How about\nI take you\nto your\nPROM??", vw * 0.505, vh * 0.155);
+	text("Quinlan...\nLet me\ntake you\nto your\nPROM??", vw * 0.505, vh * 0.155);
 	fill(150, 150, 230);
-	text("How about\nI take you\nto your\nPROM??", vw * 0.5, vh * 0.15);
+	text("Quinlan...\nLet me\ntake you\nto your\nPROM??", vw * 0.5, vh * 0.15);
+
+	stroke(1);
+	fill(23, 193, 209);
+	heart(vw * 0.17, vh * 0.2, 2.1);
+	fill(23, 163, 42);
+	heart(vw * 0.85, vh * 0.45, 3);
+	fill(237, 110, 26);
+	heart(vw * 0.11, vh * 0.65, 3.6);
+	fill(36, 26, 235);
+	heart(vw * 0.9, vh * 0.06, 4);
+
+
 }
+
+function heart(x, y, sz) {
+	bezier(x, (-1 * sz) + y, x, (-15 * sz) + y, x + (26 * sz), (-8 * sz) + y, x, (15 * sz) + y);
+	bezier(x, (-1 * sz) + y, x, (-15 * sz) + y, x - (26 * sz), (-8 * sz) + y, x, (15 * sz) + y);
+};
 
 class confetti {
 	constructor() {
