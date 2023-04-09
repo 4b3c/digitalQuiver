@@ -24,7 +24,7 @@ function draw() {
 	fill(255);
 	rect(vw * 0.6, vh * 0.84, vw * 0.03, vh * 0.03, 6);
 
-	textSize(vw * 0.16);
+	textSize(40 + (vh / vw) * 10);
 	textAlign(CENTER);
 	textWidth(vw);
 	fill(0, 0, 0);
