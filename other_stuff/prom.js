@@ -28,9 +28,9 @@ function draw() {
 	textAlign(CENTER);
 	textWidth(vw);
 	fill(0, 0, 0);
-	text("Quinlan...\nLet me\ntake you\nto your\nPROM??", vw * 0.505, vh * 0.155);
+	text("Quinlan...\nWill you\ngo to prom\nwith me??", vw * 0.505, vh * 0.155);
 	fill(150, 150, 230);
-	text("Quinlan...\nLet me\ntake you\nto your\nPROM??", vw * 0.5, vh * 0.15);
+	text("Quinlan...\nWill you\ngo to prom\nwith me??", vw * 0.5, vh * 0.15);
 
 	stroke(1);
 	fill(23, 193, 209);
