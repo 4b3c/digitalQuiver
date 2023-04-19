@@ -1,10 +1,12 @@
 let vw;
 let vh;
+let yessed;
 
 function setup() {
 	createCanvas(windowWidth, windowHeight);
 	vw = windowWidth;
-	vh = windowHeight
+	vh = windowHeight;
+	yessed = false;
 
 	all_confetti = new lots_of_it(60);
 }
@@ -12,7 +14,9 @@ function setup() {
 function draw() {
 	background(50, 50, 70);
 
-	all_confetti.draw();
+	if (yessed) {
+		all_confetti.draw();
+	}
 
 	noStroke();
 	fill(250, 250, 30);
@@ -42,7 +46,31 @@ function draw() {
 	fill(36, 26, 235);
 	heart(vw * 0.9, vh * 0.06, 4);
 
+	fill(155);
+	rect(vw * 0.33, vh * 0.59, vw * 0.34, vh * 0.07);
+	rect(vw * 0.33, vh * 0.69, vw * 0.34, vh * 0.07);
+	fill(255);
+	rect(vw * 0.35, vh * 0.6, vw * 0.3, vh * 0.05);
+	rect(vw * 0.35, vh * 0.7, vw * 0.3, vh * 0.05);
+	fill(0);
+	textSize((40 + (vh / vw) * 10) * 0.6);
+	text("Yes", vw * 0.5, vh * 0.64);
+	text("No", vw * 0.5, vh * 0.74);
 
+}
+
+function mousePressed() {
+	if (mouseY < vh * 0.59 || mouseY > vh * 0.75) {
+		return
+	} else if (mouseX < vw * 0.33 || mouseX > vw * 0.67) {
+		return
+	}
+
+	if (mouseY < ((vh * 0.59) + (vh * 0.07))) {
+		yessed = true;
+	} else if (mouseY > vh * 0.6) {
+		window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+	}
 }
 
 function heart(x, y, sz) {
