@@ -69,7 +69,7 @@ function mousePressed() {
 	if (mouseY < ((vh * 0.59) + (vh * 0.07))) {
 		yessed = true;
 	} else if (mouseY > vh * 0.6) {
-		window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+		window.location = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
 	}
 }
 
