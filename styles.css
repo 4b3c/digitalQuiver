@@ -33,3 +33,28 @@ body {
   font-style: italic;
   font-family: 'Roboto', sans-serif;
 }
+
+.menu {
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  width: 16vw;
+  height: 80vh;
+  background-color: #3F4354;
+  transform: translate(-50%, -50%);
+  transform-origin: center center;
+/*  transform: rotate(-80deg);*/
+/*  transition: transform 0.4s ease-in-out;*/
+
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20%;
+  height: 20%;
+  border-radius: 50%;
+  background-color: #1AB13B;
+  transform: translate(-50%, -50%);
+}
