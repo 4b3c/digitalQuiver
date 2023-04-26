@@ -1,0 +1,35 @@
+body {
+  background-image: url('images/paint_thing.jpg');
+  background-size: auto 120vh;
+  background-position: center bottom;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.title {
+  position: absolute;
+  top: 16%;
+  left: 45%;
+  font-size: 8vw;
+  color: white;
+  font-weight: normal;
+  text-align: right;
+  font-family: 'Roboto', sans-serif;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.subtitle {
+  position: absolute;
+  top: calc(16% + 8vw);
+  left: calc(45% + 30vw);
+  font-size: 2.5vw;
+  color: white;
+  font-weight: normal;
+  text-align: right;
+  font-style: italic;
+  font-family: 'Roboto', sans-serif;
+}
