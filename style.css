@@ -1,10 +1,29 @@
 body {
-  background-image: url('images/paint_thing.jpg');
-  background-size: auto 120vh;
-  background-position: center bottom;
-  overflow: hidden;
+  overflow-x: hidden;
   margin: 0;
   padding: 0;
+}
+
+h1 {
+  padding: 2%;
+  margin: 0;
+  color: white;
+}
+
+.main_background {
+  background-image: url('images/paint_thing.jpg');
+  background-size: cover;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
+.projects_background {
+  background-color: #23242A;
+  background-size: cover;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
 }
 
 .title {
@@ -35,9 +54,10 @@ body {
 }
 
 .menu {
-  position: absolute;
-
+  position: fixed;
+  top: 0%;
   background-color: #3F4354;
+/*  z-index: 3;*/
   clip-path: polygon(
     0% 70%,
     0% 100%,
@@ -57,43 +77,18 @@ body {
 
 @keyframes rotate {
   0% {
-    clip-path: polygon(
-      0% 70%,
-      0% 100%,
-      100% 100%,
-      100% 90%
-    );
+    clip-path: polygon(0% 70%, 0% 100%, 100% 100%, 100% 90%);
   }
   20% {
-    clip-path: polygon(
-      0% 60%,
-      0% 100%,
-      100% 100%,
-      100% 100%
-    );
+    clip-path: polygon(0% 60%, 0% 100%, 100% 100%, 100% 100%);
   }
   70% {
-    clip-path: polygon(
-      0% 0%,
-      0% 100%,
-      0% 100%,
-      30% 100%
-    );
+    clip-path: polygon(0% 0%, 0% 100%, 0% 100%, 30% 100%);
   }
   80% {
-    clip-path: polygon(
-      0% 0%,
-      0% 0%,
-      0% 100%,
-      16% 100%
-    );
+    clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 16% 100%);
   }
   100% {
-    clip-path: polygon(
-      16% 0%,
-      0% 0%,
-      0% 100%,
-      16% 100%
-    );
+    clip-path: polygon(16% 0%, 0% 0%, 0% 100%, 16% 100%);
   }
 }
