@@ -93,7 +93,7 @@ h1 {
   left: 16%;
   height: 45%;
   width: 81%;
-  background-color: rgba(255, 255, 255, 0.1);
+/*  background-color: rgba(255, 255, 255, 0.04);*/
 }
 
 .bezier_picture {
@@ -110,7 +110,7 @@ h1 {
 .bezier_text {
   position: absolute;
   color: white;
-  top: 0%;
+  top: 15%;
   left: 50%;
   margin: 1%;
 }
