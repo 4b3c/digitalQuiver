@@ -10,6 +10,21 @@ h1 {
   color: white;
 }
 
+a {
+  color: white;
+  padding: 5px;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 0.1em;
+}
+
+a:hover {
+  color: #D3D3D3;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 .main_background {
   background-image: url('images/paint_thing.jpg');
   background-size: cover;
@@ -87,13 +102,40 @@ h1 {
   }
 }
 
+.menu_text {
+  position: fixed;
+  padding: 1%;
+  top: 8%;
+  left: -16%;
+  display: flex;
+  flex-direction: column;
+
+  animation: slide 1s linear;
+  animation-play-state: paused;
+  animation-delay: calc(var(--scroll) * -1s);
+
+  animation-iteration-count: 1;
+  animation-fill-mode: both;
+}
+
+@keyframes slide {
+  0% {
+    left: -16%;
+  }
+  75% {
+    left: -16%;
+  }
+  100% {
+    left: 0%;
+  }
+}
+
 .FRC_Bezier {
   position: relative;
   margin: 1%;
   left: 16%;
   height: 45%;
   width: 81%;
-/*  background-color: rgba(255, 255, 255, 0.04);*/
 }
 
 .bezier_picture {
@@ -110,7 +152,6 @@ h1 {
 .bezier_text {
   position: absolute;
   color: white;
-  top: 15%;
   left: 50%;
   margin: 1%;
 }

@@ -9,7 +9,7 @@
 
 <body>
 
-  <div class="main_background">
+  <div class="main_background" id="main">
 
     <div class="title">digital<span class="bold">Quiver</span></div>
     <div class="subtitle">abram's projects</div>
@@ -17,15 +17,26 @@
   </div>
 
   <div class="projects_background">
-    <div class="FRC_Bezier">
+    <div class="FRC_Bezier" id="bezier">
       <div class="bezier_picture"></div>
-        <div class="bezier_text">This project was designed to complement our team's custom swerve drive and odometry programming.
-        </div>
+        <div class="bezier_text" style="top: 0%; left: 58%; scale: 2; font-style: italic;"><u>Bezier Curve Path Planning</u></div>
+        <div class="bezier_text" style="top: 15%;">This project was designed to complement our FIRST robotics team's custom swerve drive and odometry programming.</div>
     </div>
   </div>
 
   <div class="menu"></div>
   <script src="menu.js"></script>
+
+  <div class="menu_text">
+    <div class="title" style="
+      scale: 0.28;
+      left: -150%;
+      top: -100%;
+      ">digital<span class="bold">Quiver</span>
+    </div>
+    <a href="#main">Home</a>
+    <a href="#bezier">Bezier Project</a>
+  </div>
 
 </body>
 
