@@ -12,13 +12,14 @@ h1 {
 
 a {
   color: white;
-  padding: 10px;
+  padding: 15px;
+  margin-left: 10px;
   font-family: 'Roboto', sans-serif;
   letter-spacing: 0.1em;
 }
 
 a:hover {
-  color: #A8A8A8;
+  color: #828282;
 }
 
 html {
@@ -29,6 +30,7 @@ html {
   background-image: url('images/paint_thing.jpg');
   background-size: cover;
   overflow: hidden;
+  border-radius: 10px;
   width: 100vw;
   height: 100vh;
 }
@@ -154,6 +156,7 @@ html {
 .bezier_text {
   position: absolute;
   color: white;
+  font-family: 'Open Sans', sans-serif;
   left: 50%;
   margin: 1%;
 }
