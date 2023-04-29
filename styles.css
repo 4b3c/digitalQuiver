@@ -12,13 +12,13 @@ h1 {
 
 a {
   color: white;
-  padding: 5px;
+  padding: 10px;
   font-family: 'Roboto', sans-serif;
   letter-spacing: 0.1em;
 }
 
 a:hover {
-  color: #D3D3D3;
+  color: #A8A8A8;
 }
 
 html {
@@ -42,13 +42,9 @@ html {
 }
 
 .title {
-  position: absolute;
-  top: 16%;
-  left: 45%;
   font-size: 8vw;
   color: white;
   font-weight: normal;
-  text-align: right;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -88,14 +84,17 @@ html {
   0% {
     clip-path: polygon(0% 70%, 0% 100%, 100% 100%, 100% 90%);
   }
-  20% {
+  10% {
     clip-path: polygon(0% 60%, 0% 100%, 100% 100%, 100% 100%);
   }
-  70% {
+  35% {
     clip-path: polygon(0% 0%, 0% 100%, 0% 100%, 30% 100%);
   }
-  80% {
+  40% {
     clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 16% 100%);
+  }
+  50% {
+    clip-path: polygon(16% 0%, 0% 0%, 0% 100%, 16% 100%);
   }
   100% {
     clip-path: polygon(16% 0%, 0% 0%, 0% 100%, 16% 100%);
@@ -105,7 +104,7 @@ html {
 .menu_text {
   position: fixed;
   padding: 1%;
-  top: 8%;
+  top: 0%;
   left: -16%;
   display: flex;
   flex-direction: column;
@@ -122,8 +121,11 @@ html {
   0% {
     left: -16%;
   }
-  75% {
+  37.5% {
     left: -16%;
+  }
+  50% {
+    left: 0%;
   }
   100% {
     left: 0%;
