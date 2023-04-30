@@ -15,11 +15,12 @@ a {
   padding: 15px;
   margin-left: 10px;
   font-family: 'Roboto', sans-serif;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.14em;
 }
 
 a:hover {
   color: #828282;
+  letter-spacing: 0.16em;
 }
 
 html {
@@ -30,7 +31,6 @@ html {
   background-image: url('images/paint_thing.jpg');
   background-size: cover;
   overflow: hidden;
-  border-radius: 10px;
   width: 100vw;
   height: 100vh;
 }
@@ -146,6 +146,7 @@ html {
   position: relative;
   height: 100%;
   width: 50%;
+  border-radius: 20px;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -159,4 +160,56 @@ html {
   font-family: 'Open Sans', sans-serif;
   left: 50%;
   margin: 1%;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0);
+
+  animation: disappear 1s linear;
+  animation-play-state: paused;
+  animation-delay: calc(var(--scroll) * -1s);
+
+  animation-iteration-count: 1;
+  animation-fill-mode: both;
+}
+
+@keyframes disappear {
+  0% {
+    bottom: 0;
+  }
+  75% {
+    bottom: -15%;
+  }
+  100% {
+    bottom: -15%;
+  }
+}
+
+.footer-container {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.footer-container a {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+  color: #000;
+  text-decoration: none;
+  width: 120px;
+}
+
+.footer-container img {
+  width: 40px;
+  margin-right: 10px;
+}
+
+.footer-container a:hover,
+.footer-container img:hover {
+  letter-spacing: 0.16em;
+  font-style: italic;
 }
