@@ -140,13 +140,14 @@ html {
   left: 16%;
   height: 45%;
   width: 81%;
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 .bezier_picture {
   position: relative;
   height: 100%;
   width: 50%;
-  border-radius: 20px;
+  border-radius: 40px;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -156,10 +157,13 @@ html {
 
 .bezier_text {
   position: absolute;
+  top: 0%;
   color: white;
   font-family: 'Open Sans', sans-serif;
+  font-size: ;
   left: 50%;
   margin: 1%;
+  font-size: 1.12em; 
 }
 
 footer {
