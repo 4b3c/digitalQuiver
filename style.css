@@ -105,10 +105,23 @@ html {
   position: fixed;
   padding: 1%;
   top: 0%;
-  left: -16%;
+  left: 0%;
   display: flex;
   flex-direction: column;
+}
 
+.menu_text a {
+  position: relative;
+  animation: slide 1s linear;
+  animation-play-state: paused;
+  animation-delay: calc(var(--scroll) * -1s);
+
+  animation-iteration-count: 1;
+  animation-fill-mode: both;
+}
+
+.menu_text div {
+  position: relative;
   animation: slide 1s linear;
   animation-play-state: paused;
   animation-delay: calc(var(--scroll) * -1s);
@@ -119,16 +132,16 @@ html {
 
 @keyframes slide {
   0% {
-    left: -16%;
+    transform: translateX(-110%);
   }
   35% {
-    left: -16%;
+    transform: translateX(-110%);
   }
   40% {
-    left: 0%;
+    transform: translateX(0);
   }
   100% {
-    left: 0%;
+    transform: translateX(0);
   }
 }
 
@@ -162,24 +175,20 @@ footer {
   bottom: 0;
   width: 100%;
   background-color: rgba(0, 0, 0, 0);
-
-  animation: disappear 1s linear;
-  animation-play-state: paused;
-  animation-delay: calc(var(--scroll) * -1s);
-
-  animation-iteration-count: 1;
-  animation-fill-mode: both;
 }
 
 @keyframes disappear {
   0% {
-    bottom: 0;
+    transform: translateY(0);
   }
-  75% {
-    bottom: -15%;
+  25% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(200%);
   }
   100% {
-    bottom: -15%;
+    transform: translateY(200%);
   }
 }
 
@@ -190,12 +199,20 @@ footer {
 }
 
 .footer-container a {
+  position: relative;
   display: flex;
   align-items: center;
   margin: 0 10px;
   color: #000;
   text-decoration: none;
   width: 120px;
+
+  animation: disappear 1s linear;
+  animation-play-state: paused;
+  animation-delay: calc(var(--scroll) * -1s);
+
+  animation-iteration-count: 1;
+  animation-fill-mode: both;
 }
 
 .footer-container img {
