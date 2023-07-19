@@ -40,7 +40,6 @@
         .input-container select {
             font-size: 18px;
             padding: 5px;
-            margin-right: 10px;
         }
 
         .result {
@@ -54,11 +53,37 @@
         <div class="input-container">
             <input type="number" id="lengthInput" placeholder="Enter length">
             <select id="unitSelect">
+                <option value="millimeters">Millimeters</option>
                 <option value="centimeters">Centimeters</option>
+                <option value="meters">Meters</option>
+                <option value="kilometers">Kilometers</option>
                 <option value="inches">Inches</option>
+                <option value="feet">Feet</option>
+                <option value="yard">Yard</option>
+                <option value="mile">Mile</option>
             </select>
         </div>
-        <div class="result" id="result">Enter a valid number of length.</div>
+        <div class="result" id="result">Enter a valid length.</div>
+    </div>
+
+    <div class="container">
+        <h2>Convert Your Height to SabL-Cesium!</h2>
+        <div class="input-container">
+            <input type="number" id="feetInput" placeholder="Feet">
+            <input type="number" id="inchesInput" placeholder="Inches">
+        </div>
+        <div class="result" id="resultHeight">Enter valid height in feet and inches.</div>
+    </div>
+
+    <div class="container">
+        <h2>The Story of SabL-Cesium</h2>
+        <p>SabL Cesium is an innovative measurement system that envisions a future where scientific advancement and interstellar exploration redefine our understanding of measurement units. Inspired by the science fiction genre and propelled by the desire to create a unique and accessible system, SabL Cesium breaks away from traditional conventions and introduces a fresh approach to measuring length and distance.</p>
+        <p>The core vision behind SabL Cesium revolves around two fundamental elements: the speed of light and the extraordinary properties of cesium atoms. By combining these elements, SabL Cesium aims to transcend the limitations of Earth-centric measurement systems and establish a universally applicable framework that unlocks the potential of futuristic space travel and cosmic exploration.</p>
+        <p>At the heart of SabL Cesium lies the concept of utilizing the speed of light as a fundamental reference point for distance measurement. By defining a "SabL" unit, representing the distance light travels in one cycle of a cesium atom, the system bridges the gap between quantum mechanics and cosmic scales. Each SabL encompasses the essence of atomic precision and the vastness of the cosmos, aligning our measurements with the grandeur of the universe.</p>
+        <p>The distinguishing feature of SabL Cesium lies not only in its novel unit, but also in its unique base-64 numerical system. Departing from traditional base-10 measurements, this futuristic base-64 system challenges the status quo and presents an exciting and refreshing perspective. By adopting base-64, SabL Cesium embraces the potential for improved compactness, efficient data representation, and a harmonious integration with future technologies yet to be explored.</p>
+        <p>SabL Cesium opens the door to endless applications in the realms of space exploration, advanced astrophysics, and interstellar navigation. The system enables seamless conversions between traditional units and its SabL-based measurements, allowing for easy adoption in scientific research and everyday applications. Whether charting the cosmos, planning interplanetary missions, or quantifying phenomena at the quantum level, SabL Cesium empowers humanity to embrace the cosmos in an entirely new way.
+        <p>Beyond its practical applications, SabL Cesium sparks curiosity and imagination. By blending elements of science fiction with real-world scientific principles, the system captivates the minds of visionaries and dreamers alike. As an open invitation to explore new frontiers, SabL Cesium encourages collaboration among scientists, space enthusiasts, and creative thinkers, driving the evolution of measurement standards and reshaping our understanding of the universe.</p>
+        <p>SabL Cesium represents a visionary leap in the realm of measurement systems, beckoning us to reimagine our place in the cosmos. By intertwining the enigmatic properties of cesium atoms and the constancy of the speed of light, this innovative system offers a glimpse into a future where mankind's pursuit of knowledge and exploration knows no bounds. Embrace the extraordinary, embrace SabL Cesium—a tapestry woven from the fabric of stars and atoms, unveiling a new universe of measurement possibilities.</p>
     </div>
 
     <script>
@@ -66,8 +91,15 @@
         const unitSelect = document.getElementById('unitSelect');
         const resultElement = document.getElementById('result');
 
+        const feetInput = document.getElementById('feetInput');
+        const inchesInput = document.getElementById('inchesInput');
+        const resultHeightElement = document.getElementById('resultHeight');
+
         lengthInput.addEventListener('input', convertLength);
         unitSelect.addEventListener('change', convertLength);
+
+        feetInput.addEventListener('input', convertHeightToSabL);
+        inchesInput.addEventListener('input', convertHeightToSabL);
 
         function convertLength() {
             const length = parseFloat(lengthInput.value);
@@ -77,18 +109,68 @@
                 let resultText = '';
                 let SabL;
 
-                if (selectedUnit === 'centimeters') {
-                    SabL = length / 3.261225571;
-                    resultText = length + (length !== 1 ? ' centimeters are equal to ' : ' centimeter is equal to ') + SabL.toFixed(3) + ' SabL.';
-                } else if (selectedUnit === 'inches') {
-                    const centimeters = length * 2.54;
-                    SabL = centimeters / 3.261225571;
-                    resultText = length + (length !== 1 ? ' inches are equal to ' : ' inch is equal to ') + SabL.toFixed(3) + ' SabL.';
+                switch (selectedUnit) {
+                    case 'millimeters':
+                        SabL = length / 1000 / 3.261225571;
+                        resultText = length + (length !== 1 ? ' millimeters are equal to ' : ' millimeter is equal to ') + SabL.toFixed(3) + ' SabL.';
+                        break;
+                    case 'centimeters':
+                        SabL = length / 3.261225571;
+                        resultText = length + (length !== 1 ? ' centimeters are equal to ' : ' centimeter is equal to ') + SabL.toFixed(3) + ' SabL.';
+                        break;
+                    case 'meters':
+                        SabL = length * 100 / 3.261225571;
+                        resultText = length + (length !== 1 ? ' meters are equal to ' : ' meter is equal to ') + SabL.toFixed(3) + ' SabL.';
+                        break;
+                    case 'kilometers':
+                        SabL = length * 100000 / 3.261225571;
+                        resultText = length + (length !== 1 ? ' kilometers are equal to ' : ' kilometer is equal to ') + SabL.toFixed(3) + ' SabL.';
+                        break;
+                    case 'inches':
+                        SabL = length * 2.54 / 3.261225571;
+                        resultText = length + (length !== 1 ? ' inches are equal to ' : ' inch is equal to ') + SabL.toFixed(3) + ' SabL.';
+                        break;
+                    case 'feet':
+                        SabL = length * 30.48 / 3.261225571;
+                        resultText = length + (length !== 1 ? ' feet are equal to ' : ' foot is equal to ') + SabL.toFixed(3) + ' SabL.';
+                        break;
+                    case 'yard':
+                        SabL = length * 91.44 / 3.261225571;
+                        resultText = length + (length !== 1 ? ' yards are equal to ' : ' yard is equal to ') + SabL.toFixed(3) + ' SabL.';
+                        break;
+                    case 'mile':
+                        SabL = length * 160934.4 / 3.261225571;
+                        resultText = length + (length !== 1 ? ' miles are equal to ' : ' mile is equal to ') + SabL.toFixed(3) + ' SabL.';
+                        break;
+                    default:
+                        resultText = 'Invalid unit selected.';
+                        break;
                 }
 
                 resultElement.textContent = resultText;
             } else {
-                resultElement.textContent = 'Enter a valid number of length.';
+                resultElement.textContent = 'Enter a valid length.';
+            }
+        }
+
+        function convertHeightToSabL() {
+            let feet = parseFloat(feetInput.value);
+            let inches = parseFloat(inchesInput.value);
+
+            if (isNaN(feet) && isNaN(inches)) {
+                resultHeightElement.textContent = 'Enter valid height in feet and inches.';
+            } else {
+                if (isNaN(inches)) {
+                    inches = 0
+                }
+                if (isNaN(feet)) {
+                    feet = 0
+                }
+                const totalInches = feet * 12 + inches;
+                const centimeters = totalInches * 2.54;
+                const SabL = centimeters / 3.261225571;
+                const resultText = feet + (feet !== 1 ? ' feet and ' : ' foot and ') + inches + (inches !== 1 ? ' inches is ' : ' inch is  ') + SabL.toFixed(3) + ' SabL';
+                resultHeightElement.textContent = resultText;
             }
         }
     </script>
