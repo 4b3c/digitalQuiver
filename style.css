@@ -27,6 +27,14 @@ html {
   scroll-behavior: smooth;
 }
 
+.project_link a {
+  color: lightblue;
+  padding: 0px;
+  margin-left: 0px;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 0.1em;
+}
+
 .main_background {
   background-image: url('images/paint_thing.jpg');
   background-size: cover;
