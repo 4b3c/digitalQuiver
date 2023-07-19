@@ -87,13 +87,13 @@ html {
   7% {
     clip-path: polygon(0% 60%, 0% 100%, 100% 100%, 100% 100%);
   }
-  24.5% {
+  19% {
     clip-path: polygon(0% 0%, 0% 100%, 0% 100%, 30% 100%);
   }
-  28% {
+  24% {
     clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 16% 100%);
   }
-  35% {
+  29% {
     clip-path: polygon(16% 0%, 0% 0%, 0% 100%, 16% 100%);
   }
   100% {
@@ -134,10 +134,10 @@ html {
   0% {
     transform: translateX(-110%);
   }
-  35% {
+  28% {
     transform: translateX(-110%);
   }
-  40% {
+  33% {
     transform: translateX(0);
   }
   100% {
