@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convert Length to SabL-Cesium</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #23242A;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.05);
+            color: white;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .input-container {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            border-radius: 50px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .input-container input[type="number"] {
+            border: none;
+            outline: none;
+            font-size: 18px;
+            padding: 5px;
+            flex: 1;
+        }
+
+        .input-container select {
+            font-size: 18px;
+            padding: 5px;
+            margin-right: 10px;
+        }
+
+        .result {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Convert Length to SabL-Cesium:</h2>
+        <div class="input-container">
+            <input type="number" id="lengthInput" placeholder="Enter length">
+            <select id="unitSelect">
+                <option value="centimeters">Centimeters</option>
+                <option value="inches">Inches</option>
+            </select>
+        </div>
+        <div class="result" id="result">Enter a valid number of length.</div>
+    </div>
+
+    <script>
+        const lengthInput = document.getElementById('lengthInput');
+        const unitSelect = document.getElementById('unitSelect');
+        const resultElement = document.getElementById('result');
+
+        lengthInput.addEventListener('input', convertLength);
+        unitSelect.addEventListener('change', convertLength);
+
+        function convertLength() {
+            const length = parseFloat(lengthInput.value);
+            const selectedUnit = unitSelect.value;
+
+            if (!isNaN(length)) {
+                let resultText = '';
+                let SabL;
+
+                if (selectedUnit === 'centimeters') {
+                    SabL = length / 3.261225571;
+                    resultText = length + (length !== 1 ? ' centimeters are equal to ' : ' centimeter is equal to ') + SabL.toFixed(3) + ' SabL.';
+                } else if (selectedUnit === 'inches') {
+                    const centimeters = length * 2.54;
+                    SabL = centimeters / 3.261225571;
+                    resultText = length + (length !== 1 ? ' inches are equal to ' : ' inch is equal to ') + SabL.toFixed(3) + ' SabL.';
+                }
+
+                resultElement.textContent = resultText;
+            } else {
+                resultElement.textContent = 'Enter a valid number of length.';
+            }
+        }
+    </script>
+</body>
+</html>
