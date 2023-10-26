@@ -18,6 +18,22 @@
 
   <div class="projects_background">
 
+    <div class="project_container" id="waves">
+      <div class="project_picture">
+        <img src="images/abstract_wave_art.jpg" alt="Abstract Wave Art" style="border-radius: 20px; max-width: 100%;">
+      </div>
+      <div class="project_text">
+        <p style="font-size: 1.9em; font-style: italic; margin: 10px; margin-left: 0;">Abstract Wave Art</p>
+        <p>I started this project because I was fascinated by water caustics. (The light rays and reflections at the bottom of a moving body of water.) I started by trying to simulate waves, or atleast what looked like waves and I got stuck on this tangental project because I thought it looked so cool.</p>
+        <p>I started by simply adding different sine waves together (actually e^sin(x)), taking the concept from a video by Acerola. Each sine wave would have its own speed and frequency which was inversely proportional to it's size. This created a 2 dimensional map, showing the height of the added together waves at each point x.</p>
+        <p>It looked cool but it wasn't what I was going for so I took the derivative to find the slope at each point and turned it into a light map, now negatie slopes were dark and positive slopes were bright giving the impression of shadows.</p>
+        <p>Then I needed to be able to add waves going in different directions. I had no way to do this with the code I had at the time so I rewrote the entire project, making it it more object oriented utilizing classes. I thought a lot about how the best way to rotate the shadow maps I was creating. I finally decided to generate them similarily to how I already was because I would have to calculate e^sin(x) for each column instead of each pixel, which would be extremly fast. Then I would use the cv2 library to rotate the array.</p>
+        <p>This led to a new problem. Because I was rotating a rectangle it would have edges missing and the corners would go off the screen. I fixed this issue by calculating how much larger the rectangles needed to be so that when they were rotated, the distance to the side would match the distance to the corner.</p>
+        <p>After this I was able to rotate waves to any angle and add them together, and while it was only a shadowmap and not yet a water caustics map, I was very happy with it and enjoyed generating random designs and that's why I started the instagram account to post the videos I was creating with a only a little bit of math, creating such complex and interesting designs.</p>
+        <div class="project_link"><a href="https://www.instagram.com/coded_desines/">Check out the videos!</a></div>
+      </div>
+    </div>
+
     <div class="project_container" id="sabL">
       <div class="project_picture">
         <img src="images/sabL.png" alt="SabL-Cesium" style="border-radius: 20px; max-width: 100%;">
@@ -89,6 +105,7 @@
   <div class="menu_text">
     <div class="title" style="font-size: 2.24vw; padding: 11px;">digital<span class="bold">Quiver</span></div>
     <a href="#main" style="font-size: 1vw; animation-delay: calc(calc(var(--scroll) + 0.01) * -1s);">Home</a>
+    <a href="#waves" style="font-size: 1vw; animation-delay: calc(calc(var(--scroll) + 0.01) * -1s);">Abstract Wave Art</a>
     <a href="#sabL" style="font-size: 1vw; animation-delay: calc(calc(var(--scroll) + 0.01) * -1s);">SabL-Cesium</a>
     <a href="#wikifacts" style="font-size: 1vw; animation-delay: calc(calc(var(--scroll) + 0.02) * -1s);">WikiFacts Videos</a>
     <a href="#mnist" style="font-size: 1vw; animation-delay: calc(calc(var(--scroll) + 0.03) * -1s);">MNIST Project</a>
