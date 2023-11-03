@@ -89,24 +89,12 @@ html {
 }
 
 @keyframes rotate {
-  0% {
-    clip-path: polygon(0% 70%, 0% 100%, 100% 100%, 100% 90%);
-  }
-  7% {
-    clip-path: polygon(0% 60%, 0% 100%, 100% 100%, 100% 100%);
-  }
-  19% {
-    clip-path: polygon(0% 0%, 0% 100%, 0% 100%, 30% 100%);
-  }
-  24% {
-    clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 16% 100%);
-  }
-  29% {
-    clip-path: polygon(16% 0%, 0% 0%, 0% 100%, 16% 100%);
-  }
-  100% {
-    clip-path: polygon(16% 0%, 0% 0%, 0% 100%, 16% 100%);
-  }
+  0% {   clip-path: polygon(  0%  72%,   0% 100%, 100% 100%, 100%  90%); }
+  15% {  clip-path: polygon(  0%  48%,   0% 100%, 100% 100%, 100% 100%); }
+  30% {  clip-path: polygon(  0%  24%,   0% 100%,   0% 100%,  42% 100%); }
+  45% {  clip-path: polygon(  0%   0%,   0%   0%,   0% 100%,  16% 100%); }
+  60% {  clip-path: polygon( 16%   0%,   0%   0%,   0% 100%,  16% 100%); }
+  100% { clip-path: polygon( 16%   0%,   0%   0%,   0% 100%,  16% 100%); }
 }
 
 .menu_text {
@@ -139,18 +127,10 @@ html {
 }
 
 @keyframes slide {
-  0% {
-    transform: translateX(-110%);
-  }
-  28% {
-    transform: translateX(-110%);
-  }
-  33% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(0);
-  }
+  0% {   transform: translateX(-110%); }
+  45% {  transform: translateX(-110%); }
+  70% {  transform: translateX(0); }
+  100% { transform: translateX(0); }
 }
 
 .project_container {
@@ -186,18 +166,10 @@ footer {
 }
 
 @keyframes disappear {
-  0% {
-    transform: translateY(0);
-  }
-  25% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(200%);
-  }
-  100% {
-    transform: translateY(200%);
-  }
+  0% {   transform: translateY(0); }
+  30% {  transform: translateY(0); }
+  60% {  transform: translateY(200%); }
+  100% { transform: translateY(200%); }
 }
 
 .footer-container {
