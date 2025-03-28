@@ -148,7 +148,9 @@ html {
   flex: 0 0 50%;
   display: flex;
   align-items: center;
-  margin: 10px
+  margin: 10px;
+  aspect-ratio: 16 / 12;
+  overflow: hidden;
 }
 
 .project_text {
@@ -209,16 +211,24 @@ footer {
 
 
 
+.project_picture {
+  width: 100%;
+  max-width: 600px; /* You can adjust this */
+  aspect-ratio: 16 / 9; /* Optional but helpful for consistency */
+  overflow: hidden;
+  margin: auto;
+}
+
 .carousel {
   position: relative;
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 100%;
 }
 
 .carousel-image {
-  max-width: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* crop to fill */
   border-radius: 20px;
   transition: opacity 0.3s ease;
 }

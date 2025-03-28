@@ -58,25 +58,25 @@ fetch('data/projects.json')
 
     // Event delegation for carousels
     document.addEventListener("click", (e) => {
-      const btn = e.target.closest(".carousel-btn");
-      if (!btn) return;
+        const btn = e.target.closest(".carousel-btn");
+        if (!btn) return;
 
-      const carousel = btn.closest(".carousel");
-      const img = carousel.querySelector(".carousel-image");
-      const isLeft = btn.classList.contains("left");
+        const carousel = btn.closest(".carousel");
+        const img = carousel.querySelector(".carousel-image");
+        const isLeft = btn.classList.contains("left");
 
-      const projectId = carousel.getAttribute("data-project");
-      const project = projects.find(p => p.id === projectId);
-      if (!project) return;
+        const projectId = carousel.getAttribute("data-project");
+        const project = projects.find(p => p.id === projectId);
+        if (!project) return;
 
-      let index = parseInt(carousel.getAttribute("data-index"));
-      const images = project.images;
+        let index = parseInt(carousel.getAttribute("data-index"));
+        const images = project.images;
 
-      const newIndex = isLeft
+        const newIndex = isLeft
         ? (index - 1 + images.length) % images.length
         : (index + 1) % images.length;
 
-      img.src = images[newIndex];
-      carousel.setAttribute("data-index", newIndex);
+        img.src = images[newIndex];
+        carousel.setAttribute("data-index", newIndex);
     });
   });
