@@ -1,153 +1,61 @@
 <!DOCTYPE html>
-<html lang="eng">
+<html lang="en">
 
 <head>
-  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>digitalQuiver</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-
+  <!-- Hero Section -->
   <div class="main_background" id="main">
-
-    <div class="title" style="top: 16%; left: 45%; position: absolute; text-align: right;">digital<span class="bold">Quiver</span></div>
+    <div class="title" style="top: 16%; left: 45%; position: absolute; text-align: right;">
+      digital<span class="bold">Quiver</span>
+    </div>
     <div class="subtitle">abram's projects</div>
-    
   </div>
 
-  <div class="projects_background">
-
-    <div class="project_container" id="physim">
-      <div class="project_picture">
-        <img src="images/GravPhySim.png" alt="Gravitational Physics Simulation" style="border-radius: 20px; max-width: 100%;">
-      </div>
-      <div class="project_text">
-        <p style="font-size: 1.9em; font-style: italic; margin: 10px; margin-left: 0;">Gravitational Physics Simulation</p>
-        <p>I created this project as a joint Honors Contract for my physics and programming classes. It serves to simulate the orbits of bodies of variable masses, locations, and initial velocities. Each frame, the forces between each body are calculated using Newtons's universal law of gravitation. Once the 3 dimensional force is calculated, the accelerations of each body can be calculated, and then the velocities and positions can be updated.</p>
-        <p>I learned a lot through this project, and was also able to apply a lot that I have been learning in my classes. I used interfaces, I used good object oriented design, I used file readers and much more from my programming class. I'm also particularly proud of also using things from my Calculus 3 class in this project. That being my 3D vector class which creates a 3D object to visually show vectors. The visual object is a vertical cylinder with a cone on top, then rotated about the cross product of a vertical vector and the (non visual) vector pointing at the target location.</p>
-        <p>This was my first time using Java FX, and my first time using Java educatedly, I learned a ton and am so excited to do more projects with these.</p>
-        <div class="project_link"><a href="https://docs.google.com/document/d/1I4lDTvtQAAA1QllpGcWRAtw9D43FZxqdHCuA2IUDI2Q/edit?usp=sharing">Check out the paper!</a></div>
-      </div>
-    </div>
-
-    <div class="project_container" id="waves">
-      <div class="project_picture">
-        <img src="images/abstract_wave_art.jpg" alt="Abstract Wave Art" style="border-radius: 20px; max-width: 100%;">
-      </div>
-      <div class="project_text">
-        <p style="font-size: 1.9em; font-style: italic; margin: 10px; margin-left: 0;">Abstract Wave Art</p>
-        <p>I started this project because I was fascinated by water caustics. (The light rays and reflections at the bottom of a moving body of water.) I started by trying to simulate waves, or atleast what looked like waves and I got stuck on this tangental project because I thought it looked so cool.</p>
-        <p>I started by simply adding different sine waves together (actually e^sin(x)), taking the concept from a video by Acerola. Each sine wave would have its own speed and frequency which was inversely proportional to it's size. This created a 2 dimensional map, showing the height of the added together waves at each point x.</p>
-        <p>It looked cool but it wasn't what I was going for so I took the derivative to find the slope at each point and turned it into a light map, now negatie slopes were dark and positive slopes were bright giving the impression of shadows.</p>
-        <p>Then I needed to be able to add waves going in different directions. I had no way to do this with the code I had at the time so I rewrote the entire project, making it it more object oriented utilizing classes. I thought a lot about how the best way to rotate the shadow maps I was creating. I finally decided to generate them similarily to how I already was because I would have to calculate e^sin(x) for each column instead of each pixel, which would be extremly fast. Then I would use the cv2 library to rotate the array.</p>
-        <p>This led to a new problem. Because I was rotating a rectangle it would have edges missing and the corners would go off the screen. I fixed this issue by calculating how much larger the rectangles needed to be so that when they were rotated, the distance to the side would match the distance to the corner.</p>
-        <p>After this I was able to rotate waves to any angle and add them together, and while it was only a shadowmap and not yet a water caustics map, I was very happy with it and enjoyed generating random designs and that's why I started the instagram account to post the videos I was creating with a only a little bit of math, creating such complex and interesting designs.</p>
-        <div class="project_link"><a href="https://www.instagram.com/coded_desines/">Check out the videos!</a></div>
-      </div>
-    </div>
-
-    <div class="project_container" id="sabL">
-      <div class="project_picture">
-        <img src="images/sabL.png" alt="SabL-Cesium" style="border-radius: 20px; max-width: 100%;">
-      </div>
-      <div class="project_text">
-        <p style="font-size: 1.9em; font-style: italic; margin: 10px; margin-left: 0;">SabL-Cesium</p>
-        <p>This idea was inspired by a simple conversation between me and my uncle about how the metric system while being used by NASA for all interplanetary research was created based on the Earth's proportions. And the second, the unit of time everyone uses and knows, seems so arbitrary, 1/60th of 1/60th of 1/24th of an Earth day (again Earth-centric).</p>
-        <p>We came to the conclusion that a new measurement system should be made, and it should be one that is universe centric so can be measured anywhere in the universe, and that is how I came up with SabL-Cesium.</p>
-        <div class="project_link"><a href="https://4b3c.github.io/digitalQuiver/SabL/convert.html">Check out the project!</a></div>
-      </div>
-    </div>
-
-    <div class="project_container" id="wikifacts">
-      <div class="project_picture">
-        <img src="images/wikifacts.png" alt="Wikifacts YouTube Channel" style="border-radius: 20px; max-width: 100%;">
-      </div>
-      <div class="project_text">
-        <p style="font-size: 1.9em; font-style: italic; margin: 10px; margin-left: 0;">5WikiFacts AI Video Project</p>
-        <p>I created this project when I realized how useful chatgpt was. I wanted to get some practice using it so I created a project using it to create videos that were summaries of wikipedia articles in 5 facts.</p>
-        <p>The project was a success in that I got over 70 subscribers and 19 thousand views, but it wasn't a success in how low quality the videos were. Many of them are confusing and some even have 10 facts instead of 5. It was all automated so I had no control over that.</p>
-        <p>It worked by using the wikipedia python library to get the content of a wikipedia page, and using the chatgpt plugin to get 5 fun facts from that article.Then it googled each fact and downloaded the picture, and used amazon's text to speech library to generate audio. Finally it combined all the content using cv2 and then via webscraper, it uploaded the videos to youtube shorts.</p>
-        <div class="project_link"><a href="https://www.youtube.com/channel/UCbY-W4ZfbrnHluhPqqADrIA">Check out the channel!</a></div>
-      </div>
-    </div>
-
-    <div class="project_container" id="mnist">
-      <div class="project_picture">
-        <img src="images/mnist.png" alt="Mnist AI learning" style="border-radius: 20px; max-width: 100%;">
-      </div>
-      <div class="project_text">
-        <p style="font-size: 1.9em; font-style: italic; margin: 10px; margin-left: 0;">MNIST Neural Network</p>
-        <p>This project started as a school project but I had to finish it on my own when I ran out of time.</p>
-        <p>I know it has been done before, but I wanted to experiment with neural networks, and especially learn how they worked, by making my own. Using the MNIST data set, I was able to program and train my own neural network to predict hand drawn digits.</p>
-        <div class="project_link"><a href="https://github.com/4b3c/mnist_machine_learning">Check out the repo!</a></div>
-      </div>
-    </div>
-
-    <div class="project_container" id="bezier">
-      <div class="project_picture">
-        <img src="images/bezier.png" alt="Bezier curve app" style="border-radius: 20px; max-width: 100%;">
-      </div>
-      <div class="project_text">
-        <p style="font-size: 1.9em; font-style: italic; margin: 10px; margin-left: 0;">Bezier Curve Swerve Paths</p>
-        <p>This project was designed to complement our FIRST robotics team's custom swerve drive and odometry programming.</p>
-        <p>By plotting points, we could create smooth curves and generate waypoints for the robot to follow. The different paths can be added together and saved, or exported into the robot code to be used for an autonomous run.</p>
-        <p>At the Arizona East 2023 Regional, we actaully won the autonomous award for demonstrating our unique way of programming our robot's autonomous period.</p>
-        <div class="project_link"><a href="https://github.com/4b3c/bezier-curves">Check out the repo!</a></div>
-      </div>
-    </div>
-
-    <div class="project_container" id="game">
-      <div class="project_picture">
-        <img src="images/game.png" alt="Isometric game" style="border-radius: 20px; max-width: 100%;">
-      </div>
-      <div class="project_text">
-        <p style="font-size: 1.9em; font-style: italic; margin: 10px; margin-left: 0;">Isometric Game</p>
-        <p>This was a game that I've tried to create multiple times. It's been inspired by PolyTopia and the Earth 2 game on CoolMathGames.com.</p>
-        <p>I tried many things, both creating it as an isometric game and as a 2D game but each time as the project grew, I got overwhelmed by how badly set up the code was at first. I do intend on restarting this project, probably when I decide to finally learn C++.</p>
-        <p>For the isometric game I built a whole path finding algorithm so the little people could go back and forth and for the 2D version, I build a whole file/world saving system. I also experimented with perlin noise as I hope to add that in when I restart it.</p>
-        <p>The main idea of the game is a combination of SimCity, Civilization VI, and polytopia, I love polytopia but I want much more emphasis on world building and resource management like sort of exists in the CIV games. I also hope to start a devlog when I learn C++ and revisit this project.</p>
-        <div class="project_link"><a href="https://github.com/4b3c/Isometric-Map_game">Check out the repo!</a></div>
-      </div>
-    </div>
+  <!-- Projects Section (filled by script.js) -->
+  <div class="projects_background" id="projects-container">
+    <!-- JS will inject project blocks here -->
   </div>
 
+  <!-- Navigation -->
   <div class="menu"></div>
   <script src="menu.js"></script>
 
-  <div class="menu_text">
+  <!-- Menu Text Navigation -->
+  <div class="menu_text" id="nav-links">
     <div class="title" style="font-size: 2.24vw; padding: 11px;">digital<span class="bold">Quiver</span></div>
-    <a href="#main" style="font-size: 1vw; animation-delay: calc(calc(var(--scroll) + 0.01) * -1s);">Home</a>
-    <a href="#physim" style="font-size: 1vw; animation-delay: calc(calc(var(--scroll) + 0.01) * -1s);">Grav Physics Sim</a>
-    <a href="#waves" style="font-size: 1vw; animation-delay: calc(calc(var(--scroll) + 0.025) * -1s);">Abstract Wave Art</a>
-    <a href="#sabL" style="font-size: 1vw; animation-delay: calc(calc(var(--scroll) + 0.04) * -1s);">SabL-Cesium</a>
-    <a href="#wikifacts" style="font-size: 1vw; animation-delay: calc(calc(var(--scroll) + 0.055) * -1s);">WikiFacts Videos</a>
-    <a href="#mnist" style="font-size: 1vw; animation-delay: calc(calc(var(--scroll) + 0.07) * -1s);">MNIST Project</a>
-    <a href="#bezier" style="font-size: 1vw; animation-delay: calc(calc(var(--scroll) + 0.085) * -1s);">Bezier Project</a>
-    <a href="#game" style="font-size: 1vw; animation-delay: calc(calc(var(--scroll) + 0.1) * -1s);">Isometric Game</a>
+    <!-- JS will inject nav links based on project data -->
   </div>
 
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <a href="https://github.com/4b3c">
+        <img src="images/github-icon.png" alt="GitHub icon" />
+        GitHub
+      </a>
+      <a href="https://www.instagram.com/abram_pierce_/">
+        <img src="images/instagram-icon.png" alt="Instagram icon" />
+        Instagram
+      </a>
+      <a href="https://www.youtube.com/channel/UC-FUPuaPivoO5tFzZvlM9yg">
+        <img src="images/youtube-icon.png" alt="YouTube icon" />
+        YouTube
+      </a>
+      <a href="mailto:abramwpierce@icloud.com?subject=digitalQuiver">
+        <img src="images/mail-icon.png" alt="Mail icon" />
+        Email
+      </a>
+    </div>
+  </footer>
+
+  <!-- Load projects dynamically -->
+  <script src="script.js"></script>
 </body>
-
-<footer>
-  <div class="footer-container">
-    <a href="https://github.com/4b3c">
-      <img src="images/github-icon.png" alt="GitHub icon">
-      GitHub
-    </a>
-    <a href="https://www.instagram.com/abram_pierce_/" style="animation-delay: calc(calc(var(--scroll) + 0.07) * -1s);">
-      <img src="images/instagram-icon.png" alt="Instagram icon">
-      Instagram
-    </a>
-    <a href="https://www.youtube.com/channel/UC-FUPuaPivoO5tFzZvlM9yg" style="animation-delay: calc(calc(var(--scroll) + 0.14) * -1s);">
-      <img src="images/youtube-icon.png" alt="YouTube icon">
-      YouTube
-    </a>
-    <a href="mailto:abramwpierce@icloud.com?subject=digitalQuiver" style="animation-delay: calc(calc(var(--scroll) + 0.21) * -1s);">
-      <img src="images/mail-icon.png" alt="Mail icon">
-      Email
-    </a>
-  </div>
-</footer>
 
 </html>
