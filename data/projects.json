@@ -1,5 +1,21 @@
 [
     {
+        "id": "dizi",
+        "title": "A Personal Assistant Chatbot",
+        "images": ["media/dizi/discord.png", "media/dizi/terminal.png"],
+        "description": "A personal assistant chatbot that can be used on Discord and in the terminal. It can answer questions, but most importantly has the ability to run bash commands on my computer. I can control my computer from my phone using it, and it can explain terminal outputs to me.",
+        "linkText": "Check out the repo!",
+        "linkUrl": "https://github.com/4b3c/dizi"
+    },
+    {
+        "id": "charlotte",
+        "title": "Mini CHARLOTTE",
+        "images": ["media/mini-charlotte/main.jpeg", "media/mini-charlotte/cad.jpeg", "media/mini-charlotte/building.jpeg", "media/mini-charlotte/presenting.jpeg"],
+        "description": "I designed this robot using the CHARLOTTE robot as a reference. The original CHARLOTTE was made for the NASA Big Idea Competition in 2022, and won the Systems Engineering Award. Mini CHARLOTTE is fully 3D-printed, uses a Raspberri Pi and 12 Robotis motors to control the 3 3DOF legs, and the 3 1DOF legs.",
+        "linkText": "Check out the CAD!",
+        "linkUrl": "https://cad.onshape.com/documents/5d7b9cb4acdde16bb73fc4c7/w/094b5123dbbe6feb66b45634/e/4d78dbf04e5d538562c00eb0?renderMode=0&uiState=67e71c3815765d0c6b872c8c"
+    },
+    {
         "id": "charlotte",
         "title": "Mini CHARLOTTE",
         "images": ["media/mini-charlotte/main.jpeg", "media/mini-charlotte/cad.jpeg", "media/mini-charlotte/building.jpeg", "media/mini-charlotte/presenting.jpeg"],
