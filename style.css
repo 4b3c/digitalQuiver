@@ -72,6 +72,17 @@ html {
   font-family: 'Roboto', sans-serif;
 }
 
+.menu-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 16vw; /* Match the final polygon width */
+  min-width: 140px; /* Guarantees sidebar stays usable on small screens */
+  pointer-events: none; /* Prevent interference, menu itself handles clicks */
+  z-index: 1000;
+}
+
 .menu {
   position: fixed;
   top: 0%;
@@ -226,16 +237,24 @@ footer {
 }
 
 .carousel-image {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* crop to fill */
-  border-radius: 20px;
-  transition: opacity 0.3s ease;
 }
 
+.carousel-image.active {
+  opacity: 1;
+  position: relative;
+}
+
+
 .carousel-btn {
-  background: rgba(0, 0, 0, 0.4);
-  border: none;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10%;
   color: white;
   font-size: 2em;
   padding: 0.25em 0.5em;
@@ -255,5 +274,5 @@ footer {
 }
 
 .carousel-btn:hover {
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.4);
 }
