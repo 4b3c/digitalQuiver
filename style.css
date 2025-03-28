@@ -36,7 +36,7 @@ html {
 }
 
 .main_background {
-  background-image: url('images/paint_thing.jpg');
+  background-image: url('media/paint_thing.jpg');
   background-size: cover;
   overflow: hidden;
   width: 100vw;
