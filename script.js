@@ -45,11 +45,15 @@ fetch('data/projects.json')
 
       projectContainer.innerHTML += projectHTML;
 
-      navLinks.innerHTML += `
+      const truncatedTitle = project.title.length > 18 
+        ? project.title.slice(0, 18) + "…" 
+        : project.title;
+
+        navLinks.innerHTML += `
         <a href="#${project.id}" style="font-size: 1vw; animation-delay: calc(calc(var(--scroll) + ${0.01 + index * 0.015}) * -1s);">
-          ${project.title}
+            ${truncatedTitle}
         </a>
-      `;
+        `;
     });
 
     // Event delegation for carousels
