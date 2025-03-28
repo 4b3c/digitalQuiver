@@ -1,20 +1,17 @@
-
 const menu = document.querySelector('.menu');
+
 window.addEventListener('scroll', () => {
   const scrollPosition = window.pageYOffset;
-  const animationStartPosition = 0; // Set the pixel value where the animation should start
-  const animationEndPosition = 750; // Set the pixel value where the animation should end
+  const animationStartPosition = 0;
+  const animationEndPosition = 750;
 
-  // Calculate the normalized value between 0 and 1 based on the scroll position
   let normalizedScroll = (scrollPosition - animationStartPosition) / (animationEndPosition - animationStartPosition);
-  
-  // Ensure the normalized value stays within the [0, 1] range
   normalizedScroll = Math.min(1, Math.max(0, normalizedScroll));
-
   document.body.style.setProperty('--scroll', normalizedScroll);
-  
-  // Adjust the animation delay based on the scroll position
-  menu.style.animationDelay = `-${normalizedScroll * menu.style.animationDuration}`;
+
+  if (menu && menu.style.animationDuration) {
+    menu.style.animationDelay = `-${normalizedScroll * parseFloat(menu.style.animationDuration)}s`;
+  }
 });
 
 
@@ -25,11 +22,18 @@ fetch('data/projects.json')
     const navLinks = document.getElementById('nav-links');
 
     projects.forEach((project, index) => {
-      // Render each project block
+      const imageCarousel = `
+        <div class="carousel" data-project="${project.id}" data-index="0">
+          <button class="carousel-btn left">❮</button>
+          <img src="${project.images[0]}" class="carousel-image" alt="${project.title}" />
+          <button class="carousel-btn right">❯</button>
+        </div>
+      `;
+
       const projectHTML = `
         <div class="project_container" id="${project.id}">
           <div class="project_picture">
-            <img src="${project.image}" alt="${project.title}" style="border-radius: 20px; max-width: 100%;">
+            ${imageCarousel}
           </div>
           <div class="project_text">
             <p style="font-size: 1.9em; font-style: italic; margin: 10px 0;">${project.title}</p>
@@ -38,17 +42,37 @@ fetch('data/projects.json')
           </div>
         </div>
       `;
+
       projectContainer.innerHTML += projectHTML;
 
-      // Add to nav
       navLinks.innerHTML += `
         <a href="#${project.id}" style="font-size: 1vw; animation-delay: calc(calc(var(--scroll) + ${0.01 + index * 0.015}) * -1s);">
           ${project.title}
         </a>
       `;
     });
-  })
-  .catch(err => {
-    console.error('Failed to load projects:', err);
-    document.getElementById('projects-container').innerHTML = '<p>Failed to load projects.</p>';
+
+    // Event delegation for carousels
+    document.addEventListener("click", (e) => {
+      const btn = e.target.closest(".carousel-btn");
+      if (!btn) return;
+
+      const carousel = btn.closest(".carousel");
+      const img = carousel.querySelector(".carousel-image");
+      const isLeft = btn.classList.contains("left");
+
+      const projectId = carousel.getAttribute("data-project");
+      const project = projects.find(p => p.id === projectId);
+      if (!project) return;
+
+      let index = parseInt(carousel.getAttribute("data-index"));
+      const images = project.images;
+
+      const newIndex = isLeft
+        ? (index - 1 + images.length) % images.length
+        : (index + 1) % images.length;
+
+      img.src = images[newIndex];
+      carousel.setAttribute("data-index", newIndex);
+    });
   });

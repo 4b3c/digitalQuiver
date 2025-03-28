@@ -205,3 +205,45 @@ footer {
   letter-spacing: 0.16em;
   font-style: italic;
 }
+
+
+
+
+.carousel {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-image {
+  max-width: 100%;
+  border-radius: 20px;
+  transition: opacity 0.3s ease;
+}
+
+.carousel-btn {
+  background: rgba(0, 0, 0, 0.4);
+  border: none;
+  color: white;
+  font-size: 2em;
+  padding: 0.25em 0.5em;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.carousel-btn.left {
+  left: 10px;
+}
+
+.carousel-btn.right {
+  right: 10px;
+}
+
+.carousel-btn:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
