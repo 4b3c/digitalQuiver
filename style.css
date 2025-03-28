@@ -233,6 +233,9 @@ footer {
   object-fit: cover;
   width: 100%;
   height: 100%;
+  object-fit: cover; /* crop to fill */
+  border-radius: 20px;
+  transition: opacity 0.3s ease;
 }
 
 .carousel-image.active {
@@ -240,18 +243,14 @@ footer {
   position: relative;
 }
 
-
 .carousel-btn {
+  background: rgba(0, 0, 0, 0.4);
+  border: none;
   background: rgba(0, 0, 0, 0.2);
   border-radius: 10%;
   color: white;
   font-size: 2em;
   padding: 0.25em 0.5em;
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 2;
 }
 
 .carousel-btn.left {
