@@ -45,7 +45,7 @@ fetch('data/projects.json')
 
       projectContainer.innerHTML += projectHTML;
 
-      const truncatedTitle = project.title.length > 18 
+      const truncatedTitle = project.title.length > 16 
         ? project.title.slice(0, 18) + "…" 
         : project.title;
 
