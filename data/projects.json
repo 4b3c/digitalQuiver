@@ -1,11 +1,11 @@
 [
     {
-        "id": "dizi",
-        "title": "Dizi: Discord/Terminal AI Assistant",
-        "images": ["media/dizi/discord.png", "media/dizi/terminal.png"],
+        "id": "zipper",
+        "title": "Zipper: Discord/Terminal AI Assistant",
+        "images": ["media/zipper/discord.png", "media/zipper/terminal.png"],
         "description": "A personal assistant chatbot that can be used on Discord and in the terminal. It can answer questions, but most importantly has the ability to run bash commands on my computer. I can control my computer from my phone using it, and it can explain terminal outputs to me.",
         "linkText": "Check out the repo!",
-        "linkUrl": "https://github.com/4b3c/dizi"
+        "linkUrl": "https://github.com/4b3c/zipper"
     },
     {
         "id": "charlotte",
@@ -49,7 +49,7 @@
     },
     {
       "id": "wikifacts",
-      "title": "5WikiFacts AI Video Project",
+      "title": "WikiFacts AI Video Project",
       "images": ["media/wikifacts.png"],
       "description": "An automated pipeline that generated short videos summarizing Wikipedia articles into 5 facts. Used ChatGPT, Wikipedia API, Google Images, Amazon TTS, and OpenCV to compile videos and upload to YouTube Shorts. Gained 70+ subs and 19K+ views.",
       "linkText": "Check out the channel!",

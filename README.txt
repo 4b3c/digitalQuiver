@@ -1,1 +1,1 @@
-Read the 'About' section instead.
+This is just a portfolio to show some of my projects.
