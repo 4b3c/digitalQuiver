@@ -169,8 +169,8 @@ footer {
 
 @keyframes disappear {
   0% {   transform: translateY(0); }
-  30% {  transform: translateY(0); }
-  60% {  transform: translateY(200%); }
+  10% {  transform: translateY(0); }
+  40% {  transform: translateY(200%); }
   100% { transform: translateY(200%); }
 }
 
