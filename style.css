@@ -170,6 +170,7 @@ footer {
   bottom: 0;
   width: 100%;
   background-color: rgba(0, 0, 0, 0);
+  z-index: 6;
 }
 
 @keyframes disappear {
@@ -183,7 +184,6 @@ footer {
   display: flex;
   justify-content: left;
   align-items: center;
-  z-index: 6;
 }
 
 .footer-container a {
