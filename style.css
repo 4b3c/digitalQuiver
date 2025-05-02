@@ -201,6 +201,7 @@ footer {
 
   animation-iteration-count: 1;
   animation-fill-mode: both;
+  z-index: 6;
 }
 
 .footer-container img {
