@@ -1,7 +1,9 @@
-body {
+html, body {
   overflow-x: hidden;
   margin: 0;
   padding: 0;
+  background-color: #23242A;
+  overscroll-behavior: none;
 }
 
 h1 {
@@ -21,10 +23,6 @@ a {
 a:hover {
   color: #828282;
   letter-spacing: 0.16em;
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 .project_link a {
